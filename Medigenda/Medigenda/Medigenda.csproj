@@ -43,9 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Company.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="Day.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="ServiceName.cs" />
+    <Compile Include="Shift.cs" />
+    <Compile Include="Testable.cs" />
+    <Compile Include="Tima.cs" />
+    <Compile Include="Worker.cs" />
+    <Compile Include="WorkingDay.cs" />
+    <Compile Include="WorkingShift.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
