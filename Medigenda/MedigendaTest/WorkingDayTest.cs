@@ -4,28 +4,21 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MedigendaTest
 {
     [TestClass]
-    public class CompanyTest
+    public class WorkingDayTest
     {
         [TestMethod]
-        public void Company_HasName()
+        public void WorkingDay_HasDate()
         {
             Assert.AreEqual("0", "1");
         }
         [TestMethod]
-        public void Company_HasListOfWorkers()
+        public void WorkingDay_HasListOfShift()
         {
             Assert.AreEqual("0", "1");
         }
-        [TestMethod]
-        public void Company_HasDictofDays()
+        public void WorkingDay_HasWorkingHours()
         {
             Assert.AreEqual("0", "1");
         }
-        [TestMethod]
-        public void Company_HasListofService()
-        {
-            Assert.AreEqual("0", "1");
-        }
-
     }
 }

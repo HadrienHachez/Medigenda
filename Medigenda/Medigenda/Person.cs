@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Medigenda
 {
-    class Person
+    public class Person
     {
         private string first_name, last_name;
 

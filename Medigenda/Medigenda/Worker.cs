@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Medigenda
 {
-    class Worker : Person
+    public class Worker : Person
     {
 
         private List<ServiceName> skills;

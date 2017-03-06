@@ -1,37 +1,32 @@
 ﻿using System;
-using Medigenda;
-using static Medigenda.Worker;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MedigendaTest
 {
     [TestClass]
-    public class WorkerTest
+    public class ShiftTest
     {
-        Worker Homer = new Worker("Homer","Simpson");
-
         [TestMethod]
-        public void Worker_HasListOfSkills()
+        public void Shift_HasStartHours()
         {
             Assert.AreEqual("0", "1");
         }
         [TestMethod]
-        public void Worker_HasContractType()
+        public void Shift_HasFinishHours()
         {
             Assert.AreEqual("0", "1");
         }
         [TestMethod]
-        public void Worker_HasListOfNonWWorkingDays()
+        public void Shift_ListOfWorkersHours()
         {
             Assert.AreEqual("0", "1");
         }
         [TestMethod]
-        public void Worker_HasDictOfSchedule()
+        public void Shift_HasMinWorkers()
         {
             Assert.AreEqual("0", "1");
         }
-        [TestMethod]
-        public void Worker_HasDictOfHours()
+        public void Shift_HasOptWorkers()
         {
             Assert.AreEqual("0", "1");
         }
