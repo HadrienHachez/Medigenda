@@ -7,27 +7,27 @@ namespace MedigendaTest
     public class WorkerTest
     {
         [TestMethod]
-        public void HelloTest()
+        public void Worker_HasListOfSkills()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsListOfSkills()
+        [TestMethod]
+        public void Worker_HasContractType()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsContractType()
+        [TestMethod]
+        public void Worker_HasListOfNonWWorkingDays()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsListOfNonWWorkingDays()
+        [TestMethod]
+        public void Worker_HasDictOfSchedule()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsDictOfSchedule()
-        {
-            Assert.AreEqual("1", "1");
-        }
-        public void AsDictOfSchedule()
+        [TestMethod]
+        public void Worker_HasDictOfHours()
         {
             Assert.AreEqual("1", "1");
         }

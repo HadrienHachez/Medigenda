@@ -7,23 +7,22 @@ namespace MedigendaTest
     public class CompanyTest
     {
         [TestMethod]
-        public void HelloTest()
+        public void Company_HasName()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsName()
+        [TestMethod]
+        public void Company_HasListOfWorkers()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsListOfWorkers()
+        [TestMethod]
+        public void Company_HasDictofDays()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsDictofDays()
-        {
-            Assert.AreEqual("1", "1");
-        }
-        public void AsListofService()
+        [TestMethod]
+        public void Company_HasListofService()
         {
             Assert.AreEqual("1", "1");
         }
