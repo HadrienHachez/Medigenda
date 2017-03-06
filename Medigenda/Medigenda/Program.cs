@@ -10,6 +10,10 @@ namespace Medigenda
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello you pretty girl <3");
+            Console.ReadLine();
+
+
         }
     }
 }
