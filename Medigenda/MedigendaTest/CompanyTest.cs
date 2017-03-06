@@ -4,32 +4,29 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MedigendaTest
 {
     [TestClass]
-    public class WorkerTest
+    public class CompanyTest
     {
         [TestMethod]
         public void HelloTest()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsListOfSkills()
+        public void AsName()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsContractType()
+        public void AsListOfWorkers()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsListOfNonWWorkingDays()
+        public void AsDictofDays()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsDictOfSchedule()
+        public void AsListofService()
         {
             Assert.AreEqual("1", "1");
         }
-        public void AsDictOfSchedule()
-        {
-            Assert.AreEqual("1", "1");
-        }
+
     }
 }
