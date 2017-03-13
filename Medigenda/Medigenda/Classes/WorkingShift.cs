@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Medigenda
 {
-    class WorkingShift
+    public class WorkingShift
     {
         //Format de l'heure: HH:mm
         private string start_hour, end_hour;

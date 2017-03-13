@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Medigenda
 {
-    class Tima
+    public class Tima
     {
         private string name;
         private float factor;

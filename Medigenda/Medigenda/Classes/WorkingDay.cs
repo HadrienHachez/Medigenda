@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Medigenda
 {
-    class WorkingDay
+    public class WorkingDay
     {
         private DateTime date;
         private List<WorkingShift> shifts;
@@ -43,6 +43,11 @@ namespace Medigenda
         public float Working_hours
         {
             get { return this.working_hours; }
+        }
+
+        public DateTime Date
+        {
+            get { return this.date; }
         }
 
    

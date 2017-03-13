@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Medigenda
 {
-    class Service
+    public class Service
     {
         private ServiceName service_name;
         private List<Shift> shifts;
@@ -17,19 +17,37 @@ namespace Medigenda
         }
 
         /******* Methods *******/
+
+        /* Adds a new shift in the list "shifts" 
+         * @pre - shift must exist
+         * @post - the list "shifts" is updated and changes are saved in the database
+         */
         public void addShift(Shift shift)
         {
-
+            this.shifts.Add(shift);
         }
 
+        /* Deletes the shift from the list "shifts" 
+         * @pre - shift must exist
+         * @post - the list "shifts" is updated and changes are saved in the database
+         */
         public void delShift(Shift shift)
         {
-
+            if(this.shifts.Contains(shift))
+            {
+                this.shifts.Remove(shift);
+            }
         }
 
         public WorkingShift getWorkerShifts(Worker work)
         {
             return null;
+        }
+
+        //Returns the name of the service
+        public string getName()
+        {
+            return this.service_name.Service_name;
         }
 
         /******* Tests *******/
