@@ -1,19 +1,27 @@
 ﻿using System;
-using Medigenda;
-using static Medigenda.Worker;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static Medigenda.Worker;
+using Medigenda;
 
 namespace MedigendaTest
 {
     [TestClass]
     public class WorkerTest
     {
-        Worker Homer = new Worker("Homer","Simpson");
-
         [TestMethod]
-        public void Worker_HasListOfSkills()
+        public void Worker_Creation()
         {
-            Assert.AreEqual("0", "1");
+            try
+            {
+                Worker guy = new Worker("Homer", "Simpson");
+                Worker guy2 = new Worker("Ned", "Flanders");
+                Worker girl = new Worker("Marge", "Simpson");
+                Worker kid = new Worker("Milhouse", "Van Houten");
+            }
+            catch
+            {
+                Assert.Equals(0, 1);
+            }
         }
         [TestMethod]
         public void Worker_HasContractType()
