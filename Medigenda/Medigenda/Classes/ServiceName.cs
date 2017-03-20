@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Medigenda
 {
-    class ServiceName
+    public class ServiceName
     {
         private string service_name;
 
