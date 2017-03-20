@@ -12,17 +12,22 @@ namespace Medigenda
         private List<ServiceName> skills = new List<ServiceName>();
         private Tima tima;
         private List<DateTime> non_working_days = new List<DateTime>();
+
+        //Dictionary containing all the days of an entire year. The value is 'true' if the employee is working that day and 'false' if he has a break 
+        private Dictionary<DateTime, bool> working_days;
         private Dictionary<int, float> hours = new Dictionary<int, float>();
-        private Dictionary<int, WorkingDay> schedule = new Dictionary<int, WorkingDay>();
+        //The key corresponds to the conversion of the DateTime attribute in the WorkingDay object
+        private Dictionary<double, WorkingDay> schedule = new Dictionary<double, WorkingDay>();
 
-        public Worker(string first, string last) : base(first, last)
-        {
+        public Worker(string first, string last, int id) : base(first, last, id)
+        {   
 
+            genDictDays(this.non_working_days);
         }
 
         /******* Methods *******/
 
-        /* Cheks if the employe is working on the day 'date'
+        /* Cheks if the employee is working on the day 'date'
          * @pre - 
          * @post - 
          */ 
@@ -31,7 +36,7 @@ namespace Medigenda
             bool is_working = false;
 
             //Cheks if this date is included in the list "non_workings_days" of the worker
-            foreach (KeyValuePair<int, WorkingDay> entry in this.schedule)
+            foreach (KeyValuePair<double, WorkingDay> entry in this.schedule)
             {
                 int result = DateTime.Compare(date, entry.Value.Date);
                 if (result == 0)
@@ -44,25 +49,13 @@ namespace Medigenda
         }
 
 
-        /* Cheks if the employe can work on the day "date" or not
-         * @pre - non_working_day must be uptodate
-         * @post -
+        /* Cheks if the employee can work on the day "date" or not
+         * @pre - working_days must be uptodate
+         * @post - return 'true' or 'false' if the employe has a day break
          */ 
         public bool canWork(DateTime date)
         {
-            bool can_work = true;
-
-            //Cheks if this date is included in the list "non_workings_days" of the worker
-            foreach (DateTime d_t in this.non_working_days)
-            {
-                int result = DateTime.Compare(date, d_t);
-                if (result == 0)
-                {
-                    can_work = false;
-                }
-            }
-
-            return can_work;
+            return this.working_days[date];
         }
 
 
@@ -71,50 +64,74 @@ namespace Medigenda
             return -1;
         }
 
-        /* Adds a day of break 
-         * @pre - 
-         * @post - the list "non_working_days" is updated and so is the database
-         */ 
-        public void addBreak(DateTime date)
+        /* Switches the current value of the DateTime in the dictionary 'working_days'. (By default all DateTime are 'true')
+         * @pre -  
+         * @post - a value 'true' becomes 'false' and vice versa
+         */
+        public void switchBreak(DateTime date)
         {
-            this.non_working_days.Add(date);
-        }
-
-        /* Deletes the day from the list "non_working_days"
-        * @pre - the day corresponding to "date" must be included in the list "non_working_days"
-        * @post - the list "non_working_days" is updated and so is the database
-        */
-        public void delBreak(DateTime date)
-        {
-            if(this.non_working_days.Contains(date))
-            {
-                this.non_working_days.Remove(date);
-            }
+            this.working_days[date] =  !(this.working_days[date]);
         }
 
         /* Add a new service to the list "skills" of the worker
          * @pre - service_name must exist
          * @post - the list "skills" is updated and changes are saved in the database
          */
-        public void addSkill(ServiceName service_name)
+        public void addSkill(ServiceName serv_name)
         {
-            this.skills.Add(service_name);
+            this.skills.Add(serv_name);
         }
 
         /* Delete the service from the list "skills" of the worker
          * @pre - service_name must exist
          * @post - the list "skills" is updated and changes are saved in the database
          */
-        public void delSkill(ServiceName service_name)
+        public void delSkill(ServiceName serv_name)
         {
-            if(this.skills.Contains(service_name))
+            if(this.skills.Contains(serv_name))
             {
-                this.skills.Remove(service_name);
-            }
-            
+                this.skills.Remove(serv_name);
+            }      
         }
 
+        /* Generates the dictionary "working_days" based on the list "non_working_days"
+         * @pre - the list "non_working_days" must be uptodate
+         * @post - the dictionary is created but the list "non_working_days" isn't changed
+         */
+         public void genDictDays(List<DateTime> breaks)
+        {
+            this.working_days = new Dictionary<DateTime, bool>();
+            foreach(DateTime break_date in breaks)
+            {
+                this.working_days[break_date] = false;
+            }
+        }
 
+        /*Updates its schedule by adding a new WorkingShift on a specific day "day"
+         * @pre - the day must be in the dictionary "schedule"
+         * @post - a new workingShift object is created for that day
+         */
+        public void updateSchedule(double date, ServiceName serv_name, double start_h, double end_h)
+        {
+            WorkingDay work_day;
+            if(this.schedule.TryGetValue(date, out work_day))
+            {
+                work_day.addWorkingShift(serv_name, start_h, end_h);        
+            }
+            else
+            {
+                //DISPLAY ERROR???
+            }
+        } 
+
+        /*Cheks if the worker is working during a specific period of time
+         * @pre -
+         * @post -
+         */
+         public bool isFree(double start_h, double end_h)
+        {
+            return true;
+        } 
 
         /******* Properties *******/
 

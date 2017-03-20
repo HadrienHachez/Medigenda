@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Medigenda
 {
-     //The singleton class generator creates the lists of data with the saved files
+     //The singleton class generator creates the lists of data with the information in the database
     public class Generator
     {
 

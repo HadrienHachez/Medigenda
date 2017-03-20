@@ -9,7 +9,7 @@ namespace Medigenda
     public class Service
     {
         private ServiceName service_name;
-        private List<Shift> shifts;
+        private List<Shift> shifts = new List<Shift>();
 
         public Service(ServiceName service_name)
         {
@@ -18,13 +18,15 @@ namespace Medigenda
 
         /******* Methods *******/
 
-        /* Adds a new shift in the list "shifts" 
-         * @pre - shift must exist
-         * @post - the list "shifts" is updated and changes are saved in the database
+        /* Creates a new shift and adds it to the list "shifts"
+         * @pre - 
+         * @post - the list and the database are uptdated
          */
-        public void addShift(Shift shift)
+        public void createShift(DateTime date, string start_hour, string end_hour, int min_wo, int opt_wo, ServiceName serv_name)
         {
-            this.shifts.Add(shift);
+            Shift new_shit = new Shift(date, start_hour, end_hour, min_wo, opt_wo, this.service_name);
+            this.shifts.Add(new_shit);
+            //UPDATE DB//
         }
 
         /* Deletes the shift from the list "shifts" 
@@ -49,6 +51,17 @@ namespace Medigenda
         {
             return this.service_name.Service_name;
         }
+
+       
+
+        /* Adds a new shift in the list "shifts" 
+         * @pre - shift must exist
+         * @post - the list "shifts" is updated and changes are saved in the database
+         
+        public void addShift(Shift shift)
+        {
+            this.shifts.Add(shift);
+        }*/
 
         /******* Tests *******/
 

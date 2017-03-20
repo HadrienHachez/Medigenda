@@ -9,15 +9,15 @@ namespace Medigenda
     public class Day
     {
         private DateTime date_time;
-        private string date;
+        private double date_double;
         private List<Service> services = new List<Service>();
         private Dictionary<String, Worker> present_workers = new Dictionary<string, Worker>();
         private List<Worker> available_workers = new List<Worker>();
 
         //The format of the date must be YY:MM:DD -> example: "2017:03:12"
-        public Day(string date)
+        public Day(DateTime date)
         {
-            this.date = date;
+            this.date_time = date;
         }
 
 
@@ -34,7 +34,7 @@ namespace Medigenda
             //Cheks if this current day is included in the list "non_workings_days" of the worker
             foreach(DateTime d_t in wo.Non_working_days)
             {   
-                int result = DateTime.Compare(getDateTime(), d_t);
+                int result = DateTime.Compare(this.date_time, d_t);
                 if(result == 0)
                 {
                     is_present = false;
@@ -70,24 +70,21 @@ namespace Medigenda
             return null;
         }
 
-        public DateTime getDateTime()
+        public double convertDateToDouble()
         {   
-            if (this.date_time == null)
+            if (this.date_double == default(double))
             {
-                string[] date_params = this.date.Split(':');
-                this.date_time = new DateTime(Int32.Parse(date_params[0]),
-                                              Int32.Parse(date_params[1]),
-                                              Int32.Parse(date_params[2]));
+                this.date_double  =  this.date_time.ToOADate();
             }
 
-            return this.date_time;
+            return this.date_double;
         }
 
 
         //Displays information about the day !!!!!! N'est valable que en mode développement console -> aide pour progra
         public void displayInfo()
         {
-            Console.WriteLine("Date: " + getDateTime().ToString("D"));
+            Console.WriteLine("Date: " + this.date_time.ToString("D"));
             Console.WriteLine("Services: ");
             foreach(Service serv in services)
             {
@@ -104,9 +101,9 @@ namespace Medigenda
         /******* Tests *******/
 
         /******* Properties *******/
-        public string Date
+        public DateTime Date_time
         {
-            get { return this.date; }
+            get { return this.date_time; }
         }
 
         public List<Service> Services

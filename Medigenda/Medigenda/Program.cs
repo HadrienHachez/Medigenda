@@ -15,7 +15,7 @@ namespace Medigenda
 
         static void Main(string[] args)
         {
-            /*DateTime today = new DateTime(2017, 03, 06, 10, 03, 28);
+            DateTime today = new DateTime(2017, 03, 06, 10, 03, 28);
             Console.WriteLine("DateTime today = new DateTime(2017, 03, 06, 10, 03, 28);\n\n");
             Console.WriteLine("today.ToString('...')):\n");
             Console.WriteLine("     d - " + today.ToString("d"));
@@ -36,11 +36,32 @@ namespace Medigenda
             Console.WriteLine(today.ToLongDateString());
 
             Console.WriteLine("\n today.ToString(\"HH:mm\") :\n");
-            Console.WriteLine(today.ToString("HH:mm"));
+            Console.WriteLine("\t" + today.ToString("HH:mm"));
 
             Console.WriteLine("\nObtenir les infos système courantes -> DateTime.Now.ToString(\"dd / mm / yy HH: mm\") \n");
-            Console.WriteLine(DateTime.Now.ToString("dd/mm/yy HH:mm"));*/
+            Console.WriteLine("\t" + DateTime.Now.ToString("dd/mm/yy HH:mm"));
 
+            double today_converted = today.ToOADate();
+            Console.WriteLine("\nConvertir un DateTime en Double -> double today_converted = today.ToOADate();\n");
+            Console.WriteLine("\t" + today_converted);
+            Console.WriteLine("\nConvertir un Double en DateTime -> DateTime new_today = DateTime.FromOADate(today_converted)\n");
+            DateTime new_today = DateTime.FromOADate(today_converted);
+            Console.WriteLine("\t" + new_today.ToString("F")+"\n");
+
+
+            DateTime hour_1 = new DateTime(2017, 03, 19, 22, 00, 00);
+            double h_1 = hour_1.ToOADate();
+            Console.WriteLine(h_1);
+
+            DateTime hour_2 = new DateTime(2017, 03, 19, 23, 15, 00);
+            double h_2 = hour_2.ToOADate();
+            Console.WriteLine(h_2);
+
+            double difference = h_2 - h_1;
+            Console.WriteLine("hours difference:\t" + difference);
+
+            TimeSpan t_span12 = hour_2 - hour_1;
+            Console.WriteLine("Time span in minutes:\t" + t_span12.TotalMinutes);      
 
 
 
@@ -61,7 +82,8 @@ namespace Medigenda
 
             List<Day> list_of_days = new List<Day>();
 
-            Day day_1 = new Day("2017:03:12");
+            DateTime dt = new DateTime(2017, 3, 12);
+            Day day_1 = new Day(dt);
 
             list_of_days.Add(day_1);
 
@@ -70,9 +92,9 @@ namespace Medigenda
 
 
             /*** Workers ***/
-            Worker tom = new Worker("Tom", "Sel");
-            Worker hadrien = new Worker("Hadrien", "Hachez");
-            Worker marcin = new Worker("Marcin", "Kras");
+            Worker tom = new Worker("Tom", "Sel", 1);
+            Worker hadrien = new Worker("Hadrien", "Hachez", 2 );
+            Worker marcin = new Worker("Marcin", "Kras", 3);
 
             List<Worker> list_of_workers = new List<Worker>();
             list_of_workers.Add(tom);
