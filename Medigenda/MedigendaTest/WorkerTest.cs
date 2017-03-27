@@ -8,12 +8,21 @@ namespace MedigendaTest
     [TestClass]
     public class WorkerTest
     {
-        Worker Homer = new Worker("Homer","Simpson");
-
+        Worker Marcin = new Worker("Marcin", "Krasowski", 1);
+        Worker Hadrien = new Worker("Hadrien", "Hachez", 2);
+        // TEST ATTRIBUTS
         [TestMethod]
-        public void Worker_HasListOfSkills()
+        public void Worker_HasUniqueID()
         {
-            Assert.AreEqual("0", "1");
+            try
+            {
+                Worker Tom = new Worker("Tom", "papa", 1);
+                Assert.AreEqual("0", "1");
+            }
+            catch
+            {
+                Assert.AreEqual("1", "1");
+            }
         }
         [TestMethod]
         public void Worker_HasContractType()
@@ -32,6 +41,52 @@ namespace MedigendaTest
         }
         [TestMethod]
         public void Worker_HasDictOfHours()
+        {
+            Assert.AreEqual("0", "1");
+        }
+        // TEST METHODES
+        [TestMethod]
+        public void Worker_isWorking()
+        {
+            Assert.AreEqual("0", "1");
+        }
+        [TestMethod]
+        public void Worker_canWork()
+        {
+            Assert.AreEqual("0", "1");
+        }
+        [TestMethod]
+        public void Worker_getHours()
+        {
+            Assert.AreEqual("0", "1");
+        }
+        [TestMethod]
+        public void Worker_switchBreak()
+        {
+            Assert.AreEqual("0", "1");
+        }
+        [TestMethod]
+        public void Worker_addSkill()
+        {
+            Assert.AreEqual("0", "1");
+        }
+        [TestMethod]
+        public void Worker_delSkill()
+        {
+            Assert.AreEqual("0", "1");
+        }
+        [TestMethod]
+        public void Worker_genDictDays()
+        {
+            Assert.AreEqual("0", "1");
+        }
+        [TestMethod]
+        public void Worker_updateScheldule()
+        {
+            Assert.AreEqual("0", "1");
+        }
+        [TestMethod]
+        public void Worker_isFree()
         {
             Assert.AreEqual("0", "1");
         }

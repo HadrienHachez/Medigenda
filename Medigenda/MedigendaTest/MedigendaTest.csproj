@@ -55,6 +55,7 @@
     <Compile Include="CompanyTest.cs" />
     <Compile Include="DayTest.cs" />
     <Compile Include="PersonTest.cs" />
+    <Compile Include="RulesOfShift.cs" />
     <Compile Include="ScheduleTest.cs" />
     <Compile Include="ServiceNameTest.cs" />
     <Compile Include="ServiceTest.cs" />
