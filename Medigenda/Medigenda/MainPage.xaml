@@ -2,12 +2,82 @@
     x:Class="Medigenda.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Medigenda"
+    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Style TargetType="ListView">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="DarkGray" />
+        </Style>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Style TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="ExtraLight"/>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <!-- Left content-->
+            <CommandBar.Content>
+                <AppBarButton>
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE749;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </CommandBar.Content>
+            <!-- Right content-->
+            <AppBarButton Label="Manage Workers" Click="GotoManagePerson">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE716;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="Manage Activities" Click="GotoManageActivities">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC26;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="Manage TimeSlots" Click="GotoManageTimeSlots">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE2AD;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <!-- Main Page - Global View of the Team Schedule -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" Background="White">
+            <TextBlock Text="Month" />
+        </Grid>
 
+        <ItemsControl ItemsSource="{x:Bind May}" Grid.Column="1">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding Day}" Width="Auto"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+
+
+
+        <StackPanel Name = "Worker" Grid.Column="0" Grid.Row="1" Background="lightYellow"></StackPanel>
+        <StackPanel Name = "Schedule" Grid.Row="1" Grid.Column="1" Background="LightGray"></StackPanel>
     </Grid>
 </Page>

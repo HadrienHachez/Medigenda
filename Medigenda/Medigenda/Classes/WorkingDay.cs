@@ -49,7 +49,8 @@ namespace Medigenda
          */ 
         public double dictKey()
         {
-            return this.date.ToOADate();
+            //return this.date.ToOADate();
+            return 0;
         }
 
         public List<WorkingShift> getShiftDetails()

@@ -28,8 +28,9 @@ namespace Medigenda
          */ 
         public double getSpan()
         {
-            TimeSpan time_span = DateTime.FromOADate(end_hour) - DateTime.FromOADate(start_hour);
-            return time_span.TotalMinutes;
+            //TimeSpan time_span = DateTime.FromOADate(end_hour) - DateTime.FromOADate(start_hour);
+            //return time_span.TotalMinutes;
+            return 0;
         }
 
         /******* Properties ********/

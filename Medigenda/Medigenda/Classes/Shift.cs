@@ -25,7 +25,7 @@ namespace Medigenda
             this.start_hour = new DateTime(date.Year, date.Month, date.Day, Int16.Parse(start_hour_params[0]), Int16.Parse(start_hour_params[1]), 0);
             this.end_hour = new DateTime(date.Year, date.Month, date.Day, Int16.Parse(end_hour_params[0]), Int16.Parse(end_hour_params[1]), 0);
 
-            this.date = date.ToOADate();
+            //this.date = date.ToOADate();
 
             this.min_workers = min;
             this.opt_workers = opt;
@@ -44,7 +44,7 @@ namespace Medigenda
             if(this.workers.Count()<=this.opt_workers)
             {   
                 //!! Conversion répétitive des DateTime hours en double -> quel format(s) stocker?
-                if(wo.isFree(this.start_hour.ToOADate(), this.end_hour.ToOADate()))
+                /*if(wo.isFree(this.start_hour.ToOADate(), this.end_hour.ToOADate()))
                 {
                     this.workers.Add(wo);
                     wo.updateSchedule(this.date, this.service_name, this.start_hour.ToOADate(), this.end_hour.ToOADate());
@@ -52,7 +52,7 @@ namespace Medigenda
                 else
                 {
                     //DISPLAY ERROR???
-                }
+                }*/
             }
                 
             else

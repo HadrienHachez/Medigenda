@@ -74,7 +74,7 @@ namespace Medigenda
         {   
             if (this.date_double == default(double))
             {
-                this.date_double  =  this.date_time.ToOADate();
+                //this.date_double  =  this.date_time.ToOADate();
             }
 
             return this.date_double;
@@ -84,7 +84,7 @@ namespace Medigenda
         //Displays information about the day !!!!!! N'est valable que en mode développement console -> aide pour progra
         public void displayInfo()
         {
-            Console.WriteLine("Date: " + this.date_time.ToString("D"));
+           /* Console.WriteLine("Date: " + this.date_time.ToString("D"));
             Console.WriteLine("Services: ");
             foreach(Service serv in services)
             {
@@ -95,7 +95,7 @@ namespace Medigenda
             foreach(Worker wo in available_workers)
             {
                 Console.WriteLine("\t- " + wo.First_name + " " + wo.Last_name);
-            }
+            }*/
         }
 
         /******* Tests *******/

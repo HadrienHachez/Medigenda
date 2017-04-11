@@ -110,6 +110,15 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ManageActivities\ManageActivities.xaml.cs">
+      <DependentUpon>ManageActivities.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManagePerson\ManagePerson.xaml.cs">
+      <DependentUpon>ManagePerson.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageTimeSlots\ManageTimeSlots.xaml.cs">
+      <DependentUpon>ManageTimeSlots.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +145,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ManageActivities\ManageActivities.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ManagePerson\ManagePerson.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ManageTimeSlots\ManageTimeSlots.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
