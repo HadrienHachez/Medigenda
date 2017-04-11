@@ -66,12 +66,6 @@
     <Compile Include="WorkingDayTest.cs" />
     <Compile Include="WorkingShiftTest.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Medigenda\Medigenda.csproj">
-      <Project>{a488e4b9-17f5-4457-905d-32f4ee4da0fe}</Project>
-      <Name>Medigenda</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
