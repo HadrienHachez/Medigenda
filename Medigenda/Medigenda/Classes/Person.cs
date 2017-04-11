@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoGenerateForm.Attributes;
 
 namespace Medigenda
 {
@@ -18,27 +19,38 @@ namespace Medigenda
             this.id = id;
         }
 
-        /******* Methods *******/
+        #region Methods
 
         public string dictKey()
         {
             return null;
         }
+        #endregion
+   
 
-        /******* Properties *******/
+        #region Property
+
+        [Display("Firstname")]
+        [AutoGenerateProperty]
         public string First_name
         {
             get { return this.first_name; }
         }
 
+        [Display("Lastname")]
+        [AutoGenerateProperty]
         public string Last_name
         {
             get { return this.last_name; }
         }
 
+        [Display("ID")]
+        [AutoGenerateProperty]
         public int Id
         {
             get { return this.id; }
         }
+
+        #endregion
     }
 }

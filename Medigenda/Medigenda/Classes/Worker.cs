@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoGenerateForm.Attributes;
 
 namespace Medigenda
 {
@@ -25,12 +23,12 @@ namespace Medigenda
             genDictDays(this.non_working_days);
         }
 
-        /******* Methods *******/
+        #region Methods
 
         /* Cheks if the employee is working on the day 'date'
          * @pre - 
          * @post - 
-         */ 
+         */
         public bool isWorking(DateTime date)
         {
             bool is_working = false;
@@ -131,24 +129,30 @@ namespace Medigenda
          public bool isFree(double start_h, double end_h)
         {
             return true;
-        } 
+        }
+        #endregion
 
-        /******* Properties *******/
+        #region Properties
 
+        [Display("Tima")]
+        [AutoGenerateProperty]
         public Tima Tima
         {
             get { return this.tima; }
             set { this.tima = value; }
         }
 
+
         public List<ServiceName> Skills
         {
-            get { return this.skills;  }
+            get { return this.skills;}
         }
 
         public List<DateTime> Non_working_days
         {
             get { return this.non_working_days; }
         }
+        #endregion
     }
+
 }
