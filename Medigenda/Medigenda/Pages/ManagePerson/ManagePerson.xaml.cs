@@ -17,7 +17,7 @@ using Windows.UI.Core;
 using Windows.ApplicationModel.DataTransfer;
 using AutoGenerateForm.Uwp;
 using AutoGenerateForm.Attributes;
-
+using Medigenda;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, voir la page http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -32,11 +32,12 @@ namespace Medigenda
             this.InitializeComponent();
             //Needed To Bind some Data throught Xaml.cs and Xaml files
             this.DataContext = this;
-                    }
-
-        #region Property
-        
-        #endregion
+            Worker BW = new Worker("Wéry", "Benoit", 14161);
+            Worker TS = new Worker("Selleslagh", "Tom", 14256);
+            this.WorkerListing.Add(BW);
+            this.WorkerListing.Add(TS);
+        }
+        public ObservableCollection<Worker> WorkerListing { get; set; } = new ObservableCollection<Worker>();
 
     }
 }

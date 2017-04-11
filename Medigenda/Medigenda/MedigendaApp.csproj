@@ -99,6 +99,8 @@
     <Compile Include="Classes\Day.cs" />
     <Compile Include="Classes\Generator.cs" />
     <Compile Include="Classes\Person.cs" />
+    <Compile Include="Classes\PropertyChangeBase.cs" />
+    <Compile Include="Classes\RelayCommand.cs" />
     <Compile Include="Classes\Service.cs" />
     <Compile Include="Classes\ServiceName.cs" />
     <Compile Include="Classes\Shift.cs" />

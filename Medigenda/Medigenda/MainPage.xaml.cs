@@ -33,52 +33,35 @@ namespace Medigenda
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public MainPage()
-        {
 
-            this.DataContext = this;
-            this.InitializeComponent();
-            for (int i = 0; i < 20; i++)
-            {
-                comments_tags.Add("Tag no: " + i);
-            }
+        public ObservableCollection<Worker> WorkerListing { get; set; } = new ObservableCollection<Worker>();
+        List<DateTime> May = new List<DateTime>();
 
-            for (int i = 1; i < DateTime.DaysInMonth(2017, 5); i++)
-            {
-                May.Add(new DateTime(2017, 5, i));
-            }
 
-            //Needed To Bind some Data throught Xaml.cs and Xaml files
-            this.DataContext = this;
-            //Person BW = new Person("Wéry", "Benoit");
-            //Person TS = new Person("Selleslagh", "Tom");
-            //Person AH = new Person("Heinen", "Anélie");
-            //this.SomePerson.Add(BW);
-            //this.SomePerson.Add(TS);
-            //this.SomePerson.Add(AH);
-            //LikesListView3.ItemsSource = Scan;
-        }
-
-        public List<string> comments_tags = new List<string>();
-        public List<DateTime> May = new List<DateTime>();
-        ObservableCollection<int> Test { get; set; } = new ObservableCollection<int>();
-        //ObservableCollection<Person> SomePerson { get; set; } = new ObservableCollection<Person>();
-        //ObservableCollection<Person> Radio { get; set; } = new ObservableCollection<Person>();
-        //ObservableCollection<Person> Scan { get; set; } = new ObservableCollection<Person>();
-
-        #region Property
-
-        #endregion
-
-        //Methods
-
-        //Menu
+        #region Menu
         private void GotoManagePerson(object sender, RoutedEventArgs e) { this.Frame.Navigate(typeof(ManagePerson), e); }
         private void GotoManageActivities(object sender, RoutedEventArgs e) { this.Frame.Navigate(typeof(ManageActivities), e); }
         private void GotoManageTimeSlots(object sender, RoutedEventArgs e) { this.Frame.Navigate(typeof(ManageTimeSlots), e); }
+        #endregion
 
+        public MainPage()
+        {
 
+            //Needed To Bind some Data throught Xaml.cs and Xaml files
+            this.DataContext = this;
+            this.InitializeComponent();
 
+            #region As long as the database is not available
+
+            Worker BW = new Worker("Wéry", "Benoit",14161);
+            Worker TS = new Worker("Selleslagh", "Tom",14256);
+            this.WorkerListing.Add(BW);
+            this.WorkerListing.Add(TS);
+
+            #endregion
+        }
+
+        #region DragAndDropProprty
         //DragAndDrop trought two ListViews
         private void ListPerson_DragItemsStarting(object sender, Windows.UI.Xaml.Controls.DragItemsStartingEventArgs e)
         {
@@ -149,6 +132,6 @@ namespace Medigenda
                 def.Complete();
             }
         }
-
+        #endregion
     }
 }

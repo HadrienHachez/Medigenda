@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using AutoGenerateForm.Attributes;
+using MvvmValidation;
+using System.Collections.ObjectModel;
+using System;
 using System.Threading.Tasks;
-using AutoGenerateForm.Attributes;
+using System.ComponentModel;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using AutoGenerateForm.Helpers;
 
 namespace Medigenda
+
 {
-    public class Person
+    public class Person : PropertyChangeBase
+    //public class Person : PropertyChangeBase, IValidatable, INotifyDataErrorInfo
     {
         private string first_name, last_name;
         private int id;
