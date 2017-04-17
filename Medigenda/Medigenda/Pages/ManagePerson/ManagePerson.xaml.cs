@@ -25,19 +25,10 @@ namespace Medigenda
 {
     public sealed partial class ManagePerson : Page
     {
-        
-
         public ManagePerson()
         {
             this.InitializeComponent();
-            //Needed To Bind some Data throught Xaml.cs and Xaml files
-            this.DataContext = this;
-            Worker BW = new Worker("Wéry", "Benoit", 14161);
-            Worker TS = new Worker("Selleslagh", "Tom", 14256);
-            this.WorkerListing.Add(BW);
-            this.WorkerListing.Add(TS);
-        }
-        public ObservableCollection<Worker> WorkerListing { get; set; } = new ObservableCollection<Worker>();
-
+            this.DataContext = new ManagePersonViewModel();
+        }      
     }
 }

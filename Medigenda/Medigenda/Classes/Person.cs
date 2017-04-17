@@ -41,6 +41,7 @@ namespace Medigenda
         public string First_name
         {
             get { return this.first_name; }
+            set { this.first_name = value; }
         }
 
         [Display("Lastname")]
@@ -48,6 +49,7 @@ namespace Medigenda
         public string Last_name
         {
             get { return this.last_name; }
+            set { this.last_name = value; }
         }
 
         [Display("ID")]
@@ -55,6 +57,7 @@ namespace Medigenda
         public int Id
         {
             get { return this.id; }
+            set { this.id = value; }
         }
 
         #endregion
