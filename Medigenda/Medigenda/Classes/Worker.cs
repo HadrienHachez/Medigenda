@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoGenerateForm.Attributes;
+using System.Collections.ObjectModel;
 
 namespace Medigenda
 {
     public class Worker : Person
     {
 
-        private List<ServiceName> skills = new List<ServiceName>();
+        private ObservableCollection<HaveSkills> skills = new ObservableCollection<HaveSkills>();
         private Tima tima;
         private List<DateTime> non_working_days = new List<DateTime>();
 
@@ -18,9 +19,19 @@ namespace Medigenda
         private Dictionary<double, WorkingDay> schedule = new Dictionary<double, WorkingDay>();
 
         public Worker(string first, string last, int id) : base(first, last, id)
-        {   
+        {
 
             genDictDays(this.non_working_days);
+
+
+            //Remove and update when DB is Available
+            this.Skills.Add(new HaveSkills(new ServiceName("CT-Scan")));
+            this.Skills.Add(new HaveSkills(new ServiceName("Radio")));
+            this.Skills.Add(new HaveSkills(new ServiceName("IRM")));
+            this.Skills.Add(new HaveSkills(new ServiceName("Mammo")));
+            this.Skills.Add(new HaveSkills(new ServiceName("URG")));
+            this.Skills[0].HaveThisSkills = true;
+
         }
 
         #region Methods
@@ -75,21 +86,30 @@ namespace Medigenda
          * @pre - service_name must exist
          * @post - the list "skills" is updated and changes are saved in the database
          */
-        public void addSkill(ServiceName serv_name)
+       public void addSkill(ServiceName service)
         {
-            this.skills.Add(serv_name);
+            foreach (HaveSkills skill in this.skills)
+             {
+                if (skill.Service.Service_name == service.Service_name)
+                {
+                    skill.HaveThisSkills = true;
+                }
+            }
         }
 
         /* Delete the service from the list "skills" of the worker
          * @pre - service_name must exist
          * @post - the list "skills" is updated and changes are saved in the database
          */
-        public void delSkill(ServiceName serv_name)
+       public void delSkill(ServiceName service)
         {
-            if(this.skills.Contains(serv_name))
+            foreach (HaveSkills skill in this.skills)
             {
-                this.skills.Remove(serv_name);
-            }      
+                if (skill.Service.Service_name == service.Service_name)
+                {
+                    skill.HaveThisSkills =  false;
+                }
+            }
         }
 
         /* Generates the dictionary "working_days" based on the list "non_working_days"
@@ -134,16 +154,13 @@ namespace Medigenda
 
         #region Properties
 
-        [Display("Tima")]
-        [AutoGenerateProperty]
         public Tima Tima
         {
             get { return this.tima; }
             set { this.tima = value; }
         }
 
-
-        public List<ServiceName> Skills
+        public ObservableCollection<HaveSkills> Skills
         {
             get { return this.skills;}
         }

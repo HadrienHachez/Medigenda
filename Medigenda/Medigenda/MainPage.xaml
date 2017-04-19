@@ -81,3 +81,4 @@
         <StackPanel Name = "Schedule" Grid.Row="1" Grid.Column="1" Background="LightGray"></StackPanel>
     </Grid>
 </Page>
+<!-- https://blogs.msdn.microsoft.com/devschool/2015/06/25/wpf-project-that-uses-mysql/ -->

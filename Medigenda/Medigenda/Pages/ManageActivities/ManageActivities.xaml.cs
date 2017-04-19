@@ -25,6 +25,7 @@ namespace Medigenda
         public ManageActivities()
         {
             this.InitializeComponent();
+            Worker BW = new Worker("Wéry", "Benoit", 14161);
         }
     }
 }

@@ -18,6 +18,7 @@ using Windows.ApplicationModel.DataTransfer;
 using AutoGenerateForm.Uwp;
 using AutoGenerateForm.Attributes;
 using Medigenda;
+using Windows.UI.Popups;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, voir la page http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,6 +30,16 @@ namespace Medigenda
         {
             this.InitializeComponent();
             this.DataContext = new ManagePersonViewModel();
-        }      
+        }
+
+
+        async private void Click(object sender, RoutedEventArgs e)
+        {
+            var myskill = (sender as CheckBox).Content.ToString();
+            MessageDialog testing = new MessageDialog(myskill);
+            await testing.ShowAsync();
+        }
     }
+
+   
 }

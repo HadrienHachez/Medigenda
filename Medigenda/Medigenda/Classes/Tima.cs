@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoGenerateForm.Attributes;
 
 namespace Medigenda
 {
@@ -17,7 +18,6 @@ namespace Medigenda
             this.name = name;
             this.factor = factor;
         }
-
 
         public string Name
         {

@@ -9,14 +9,16 @@ using System.Collections.Generic;
 using System.Reflection;
 using AutoGenerateForm.Helpers;
 
+
+
 namespace Medigenda
 
 {
     public class Person : PropertyChangeBase
-    //public class Person : PropertyChangeBase, IValidatable, INotifyDataErrorInfo
     {
         private string first_name, last_name;
         private int id;
+
 
         public Person(string first, string last, int id)
         {
@@ -32,28 +34,28 @@ namespace Medigenda
             return null;
         }
         #endregion
-   
+
 
         #region Property
-
-        [Display("Firstname")]
         [AutoGenerateProperty]
+        [Display("Firstname")]
         public string First_name
         {
             get { return this.first_name; }
             set { this.first_name = value; }
         }
 
-        [Display("Lastname")]
         [AutoGenerateProperty]
+        [Display("Lastname")]
         public string Last_name
         {
             get { return this.last_name; }
             set { this.last_name = value; }
         }
 
-        [Display("ID")]
         [AutoGenerateProperty]
+        [Display("ID")]
+        
         public int Id
         {
             get { return this.id; }

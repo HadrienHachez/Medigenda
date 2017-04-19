@@ -53,11 +53,6 @@ namespace Medigenda
 
             #region As long as the database is not available
 
-            Worker BW = new Worker("Wéry", "Benoit",14161);
-            Worker TS = new Worker("Selleslagh", "Tom",14256);
-            this.WorkerListing.Add(BW);
-            this.WorkerListing.Add(TS);
-
             #endregion
         }
 

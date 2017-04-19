@@ -98,6 +98,7 @@
     <Compile Include="Classes\Company.cs" />
     <Compile Include="Classes\Day.cs" />
     <Compile Include="Classes\Generator.cs" />
+    <Compile Include="Classes\HaveSkills.cs" />
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\PropertyChangeBase.cs" />
     <Compile Include="Classes\RelayCommand.cs" />
