@@ -45,17 +45,21 @@
         <!-- Form Content -->
         <StackPanel Grid.Column="1">
             <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedWorker, Mode=TwoWay}"/>
-            <ListView
-                Grid.Row="1"
-                ItemsSource="{Binding SelectedWorker.Skills, Mode=TwoWay}"
-                >
-                <ListView.ItemTemplate>
+            <ItemsControl ItemsSource="{Binding SelectedWorker}">
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <!-- List Content-->
-                        <CheckBox Content="{Binding Service.Service_name, Mode=TwoWay}"  IsChecked="{Binding Path=HaveThisSkills }"></CheckBox>
+                        <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedWorker, Mode=TwoWay}"/>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ItemsControl ItemsSource="{Binding SelectedWorker.Skills}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Service.Service_name, Mode=TwoWay}" IsChecked="{Binding Path=HaveThisSkills }"></CheckBox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
     </Grid>
 </Page>

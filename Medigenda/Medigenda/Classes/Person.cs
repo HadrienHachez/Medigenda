@@ -39,6 +39,7 @@ namespace Medigenda
         #region Property
         [AutoGenerateProperty]
         [Display("Firstname")]
+        [PropertyOrder(3)]
         public string First_name
         {
             get { return this.first_name; }
@@ -47,6 +48,7 @@ namespace Medigenda
 
         [AutoGenerateProperty]
         [Display("Lastname")]
+        [PropertyOrder(2)]
         public string Last_name
         {
             get { return this.last_name; }
@@ -55,7 +57,7 @@ namespace Medigenda
 
         [AutoGenerateProperty]
         [Display("ID")]
-        
+        [PropertyOrder(1)]
         public int Id
         {
             get { return this.id; }

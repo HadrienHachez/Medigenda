@@ -17,8 +17,6 @@ namespace Medigenda
 
        
         private Worker selectedWorker;
-
-
         public Worker SelectedWorker
         {
             get {
@@ -31,8 +29,18 @@ namespace Medigenda
             }
         }
 
-       
-        
+        public Worker SelectedWorker2
+        {
+            get
+            {
+                return new Worker("Wéry", "Anélie", 14545); ;
+            }
+            set
+            {
+                NotifyPropertyChanged();
+            }
+        }
+
 
 
         public ManagePersonViewModel()

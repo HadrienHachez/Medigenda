@@ -23,7 +23,7 @@ namespace Medigenda
 
 
 
-
+        [AutoGenerateProperty]
         public ServiceName Service
         {
             get { return this.service; }
@@ -31,7 +31,7 @@ namespace Medigenda
 
        
 
-
+        [AutoGenerateProperty]
         public bool HaveThisSkills
         {
             get { return havethisskills; }

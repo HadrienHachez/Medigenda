@@ -9,6 +9,7 @@ namespace Medigenda
     {
 
         private ObservableCollection<HaveSkills> skills = new ObservableCollection<HaveSkills>();
+        private ObservableCollection<Tima> availableTima = new ObservableCollection<Tima>();
         private Tima tima;
         private List<DateTime> non_working_days = new List<DateTime>();
 
@@ -22,6 +23,18 @@ namespace Medigenda
         {
 
             genDictDays(this.non_working_days);
+
+            //Worker Available Tima - Not in DB
+            this.availableTima.Add(new Tima("Full-Time", 1));
+            this.availableTima.Add(new Tima("4/5", 4 / 5));
+            this.availableTima.Add(new Tima("3/4", 3 / 4));
+            this.availableTima.Add(new Tima("3/5", 3 / 5));
+            this.availableTima.Add(new Tima("Half-Time", 1 / 2));
+            this.availableTima.Add(new Tima("2/5", 2 / 5));
+            this.availableTima.Add(new Tima("1/5", 1 / 5));
+            //By default worker have Full-Time Tima
+            this.tima = this.availableTima[0];
+
 
 
             //Remove and update when DB is Available
@@ -154,15 +167,39 @@ namespace Medigenda
 
         #region Properties
 
+
+        [AutoGenerateProperty]
+        [DisplayMemberPathCollection("Name")]
+        [SelectedItemCollection("Tima")]
+        [Display("Time Schedule")]
+        [PropertyOrder(4)]
+        public ObservableCollection<Tima> AvailableTima
+        {
+            get { return this.availableTima; }
+            set { this.availableTima = value; NotifyPropertyChanged(); }
+        }
+
+
         public Tima Tima
         {
             get { return this.tima; }
-            set { this.tima = value; }
+            set { this.tima = value; NotifyPropertyChanged(); }
         }
 
+        private HaveSkills oneskills = new HaveSkills(new ServiceName("Scinti"));
+
+
+        public HaveSkills OneSkills
+        {
+            get { return this.oneskills; }
+            set { this.oneskills = value; }
+        }
+
+        
         public ObservableCollection<HaveSkills> Skills
         {
             get { return this.skills;}
+            set { this.skills = value; }
         }
 
         public List<DateTime> Non_working_days
