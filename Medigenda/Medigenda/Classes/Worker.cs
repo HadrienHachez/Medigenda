@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AutoGenerateForm.Attributes;
 using System.Collections.ObjectModel;
+using Windows.UI.Popups;
 
 namespace Medigenda
 {
@@ -186,16 +187,12 @@ namespace Medigenda
             set { this.tima = value; NotifyPropertyChanged(); }
         }
 
-        private HaveSkills oneskills = new HaveSkills(new ServiceName("Scinti"));
 
 
-        public HaveSkills OneSkills
-        {
-            get { return this.oneskills; }
-            set { this.oneskills = value; }
-        }
+
 
         
+
         public ObservableCollection<HaveSkills> Skills
         {
             get { return this.skills;}

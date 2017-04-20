@@ -15,7 +15,12 @@ namespace Medigenda
     public class ManagePersonViewModel : PropertyChangeBase
     {
 
-       
+        public RelayCommand CheckCommand { get; set; }
+        async private void CheckCommandExecute()
+        {
+            MessageDialog testing = new MessageDialog("CheckCommand");
+            await testing.ShowAsync();
+        }
         private Worker selectedWorker;
         public Worker SelectedWorker
         {
@@ -46,6 +51,7 @@ namespace Medigenda
         public ManagePersonViewModel()
         {
             //Get Info
+            CheckCommand= new RelayCommand(CheckCommandExecute);
             Worker BW = new Worker("Wéry", "Benoit", 14161);
             Worker TS = new Worker("Selleslagh", "Tom", 14256);
             BW.addSkill(new ServiceName("IRM"));

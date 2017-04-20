@@ -17,21 +17,23 @@ namespace Medigenda
         
         public HaveSkills(ServiceName service)
         {
+            CheckCommand = new RelayCommand(CheckCommandExecute);
             this.service = service;
             this.havethisskills = false;
         }
 
-
-
-        [AutoGenerateProperty]
         public ServiceName Service
         {
             get { return this.service; }
         }
 
-       
+        public RelayCommand CheckCommand { get; set; }
+        private void CheckCommandExecute()
+        {
+            this.havethisskills = this.havethisskills ? false : true;
+        }
 
-        [AutoGenerateProperty]
+
         public bool HaveThisSkills
         {
             get { return havethisskills; }

@@ -31,14 +31,6 @@ namespace Medigenda
             this.InitializeComponent();
             this.DataContext = new ManagePersonViewModel();
         }
-
-
-        async private void Click(object sender, RoutedEventArgs e)
-        {
-            var myskill = (sender as CheckBox).Content.ToString();
-            MessageDialog testing = new MessageDialog(myskill);
-            await testing.ShowAsync();
-        }
     }
 
    
