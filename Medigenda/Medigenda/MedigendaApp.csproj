@@ -95,21 +95,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Company.cs" />
-    <Compile Include="Classes\Day.cs" />
-    <Compile Include="Classes\Generator.cs" />
-    <Compile Include="Classes\HaveSkills.cs" />
-    <Compile Include="Classes\Person.cs" />
-    <Compile Include="Classes\PropertyChangeBase.cs" />
-    <Compile Include="Classes\RelayCommand.cs" />
-    <Compile Include="Classes\Service.cs" />
-    <Compile Include="Classes\ServiceName.cs" />
-    <Compile Include="Classes\Shift.cs" />
-    <Compile Include="Classes\Testable.cs" />
-    <Compile Include="Classes\Tima.cs" />
-    <Compile Include="Classes\Worker.cs" />
-    <Compile Include="Classes\WorkingDay.cs" />
-    <Compile Include="Classes\WorkingShift.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\Generator.cs" />
+    <Compile Include="Models\HaveSkills.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PropertyChangeBase.cs" />
+    <Compile Include="Models\RelayCommand.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\ServiceName.cs" />
+    <Compile Include="Models\Shift.cs" />
+    <Compile Include="Models\Testable.cs" />
+    <Compile Include="Models\Tima.cs" />
+    <Compile Include="Models\Worker.cs" />
+    <Compile Include="Models\WorkingDay.cs" />
+    <Compile Include="Models\WorkingShift.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
