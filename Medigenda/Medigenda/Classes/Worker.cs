@@ -8,9 +8,21 @@ namespace Medigenda
 {
     public class Worker : Person
     {
-
+        //Skills of a Worker are saved in a List where the a boolean give if the worker has this skill.
         private ObservableCollection<HaveSkills> skills = new ObservableCollection<HaveSkills>();
-        private ObservableCollection<Tima> availableTima = new ObservableCollection<Tima>();
+
+        //Available tima for the Worker - It's Legal, not mutabale
+        private ObservableCollection<Tima> availableTima = new ObservableCollection<Tima> {
+            new Tima("Full-Time", 1),
+            new Tima("4/5", 4 / 5),
+            new Tima("3/4", 3 / 4),
+            new Tima("3/5", 3 / 5),
+            new Tima("Half-Time", 1 / 2),
+            new Tima("2/5", 2 / 5),
+            new Tima("1/5", 1 / 5)
+        };
+
+        //Tima of the Worker
         private Tima tima;
         private List<DateTime> non_working_days = new List<DateTime>();
 
@@ -24,29 +36,11 @@ namespace Medigenda
         {
 
             genDictDays(this.non_working_days);
-
-            //Worker Available Tima - Not in DB
-            this.availableTima.Add(new Tima("Full-Time", 1));
-            this.availableTima.Add(new Tima("4/5", 4 / 5));
-            this.availableTima.Add(new Tima("3/4", 3 / 4));
-            this.availableTima.Add(new Tima("3/5", 3 / 5));
-            this.availableTima.Add(new Tima("Half-Time", 1 / 2));
-            this.availableTima.Add(new Tima("2/5", 2 / 5));
-            this.availableTima.Add(new Tima("1/5", 1 / 5));
+                       
             //By default worker have Full-Time Tima
             this.tima = this.availableTima[0];
-
-
-
-            //Remove and update when DB is Available
-            this.Skills.Add(new HaveSkills(new ServiceName("CT-Scan")));
-            this.Skills.Add(new HaveSkills(new ServiceName("Radio")));
-            this.Skills.Add(new HaveSkills(new ServiceName("IRM")));
-            this.Skills.Add(new HaveSkills(new ServiceName("Mammo")));
-            this.Skills.Add(new HaveSkills(new ServiceName("URG")));
-            this.Skills[0].HaveThisSkills = true;
-
-        }
+            this.skills = GenAvailableSkills();
+         }
 
         #region Methods
 
@@ -96,35 +90,7 @@ namespace Medigenda
             this.working_days[date] =  !(this.working_days[date]);
         }
 
-        /* Add a new service to the list "skills" of the worker
-         * @pre - service_name must exist
-         * @post - the list "skills" is updated and changes are saved in the database
-         */
-       public void addSkill(ServiceName service)
-        {
-            foreach (HaveSkills skill in this.skills)
-             {
-                if (skill.Service.Service_name == service.Service_name)
-                {
-                    skill.HaveThisSkills = true;
-                }
-            }
-        }
-
-        /* Delete the service from the list "skills" of the worker
-         * @pre - service_name must exist
-         * @post - the list "skills" is updated and changes are saved in the database
-         */
-       public void delSkill(ServiceName service)
-        {
-            foreach (HaveSkills skill in this.skills)
-            {
-                if (skill.Service.Service_name == service.Service_name)
-                {
-                    skill.HaveThisSkills =  false;
-                }
-            }
-        }
+  
 
         /* Generates the dictionary "working_days" based on the list "non_working_days"
          * @pre - the list "non_working_days" must be uptodate
@@ -164,11 +130,29 @@ namespace Medigenda
         {
             return true;
         }
+
+
+
+        public ObservableCollection<HaveSkills> GenAvailableSkills()
+        {
+
+            //Remove and update when DB is Available
+            //Needed for test
+            return new ObservableCollection<HaveSkills>
+            { 
+            new HaveSkills(new ServiceName("CT-Scan")),
+            new HaveSkills(new ServiceName("Radio")),
+            new HaveSkills(new ServiceName("IRM")),
+            new HaveSkills(new ServiceName("Mammo")),
+            new HaveSkills(new ServiceName("URG"))
+            };
+        }
+
+
+
         #endregion
 
         #region Properties
-
-
         [AutoGenerateProperty]
         [DisplayMemberPathCollection("Name")]
         [SelectedItemCollection("Tima")]
@@ -186,11 +170,6 @@ namespace Medigenda
             get { return this.tima; }
             set { this.tima = value; NotifyPropertyChanged(); }
         }
-
-
-
-
-
         
 
         public ObservableCollection<HaveSkills> Skills

@@ -54,7 +54,6 @@ namespace Medigenda
             CheckCommand= new RelayCommand(CheckCommandExecute);
             Worker BW = new Worker("Wéry", "Benoit", 14161);
             Worker TS = new Worker("Selleslagh", "Tom", 14256);
-            BW.addSkill(new ServiceName("IRM"));
             this.WorkerListing.Add(BW);
             this.WorkerListing.Add(TS);
             
