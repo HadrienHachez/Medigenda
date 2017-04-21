@@ -16,11 +16,16 @@ namespace Medigenda
     {
 
         public ObservableCollection<Worker> WorkerListing { get; set; } = new ObservableCollection<Worker>();
+        public RelayCommand AddButton { get; set; }
+        public RelayCommand DeleteButton { get; set; }
+
         private Worker selectedWorker;
 
        
         public ManagePersonViewModel()
         {
+            AddButton = new RelayCommand(AddButtonExecute);
+            DeleteButton = new RelayCommand(DeleteButtonExecute);
             this.WorkerListing = GetWorkerListing();
         }
 
@@ -28,6 +33,7 @@ namespace Medigenda
         #region Methods
         public ObservableCollection<Worker> GetWorkerListing()
         {
+            //Remove and Update when DB is available
             return new ObservableCollection<Worker>
             {
                  new Worker("Wéry", "Benoit", 14256),
@@ -35,6 +41,18 @@ namespace Medigenda
             };
 
         }
+
+        public void AddButtonExecute()
+        {
+            this.WorkerListing.Add(new Worker("Firstname", "Lastname", 0));
+        }
+
+        public void DeleteButtonExecute()
+        {
+            //need a Validation
+            this.WorkerListing.Remove(SelectedWorker);
+        }
+
         #endregion
 
         #region Property
@@ -45,6 +63,8 @@ namespace Medigenda
                     selectedWorker = value;
                     NotifyPropertyChanged();}
         }
+
+
 
         #endregion
 
