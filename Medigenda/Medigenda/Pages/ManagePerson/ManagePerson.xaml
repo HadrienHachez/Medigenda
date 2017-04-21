@@ -43,7 +43,6 @@
             </ListView>
         </Grid>
         <!-- Form Content -->
-        <Button Content="CheckCommand" Command="{Binding CheckCommand}"></Button>
         <StackPanel Grid.Column="1">
             <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedWorker, Mode=TwoWay}"/>
              <ItemsControl ItemsSource="{Binding SelectedWorker.Skills}">

@@ -63,9 +63,6 @@ namespace Medigenda
                     selectedWorker = value;
                     NotifyPropertyChanged();}
         }
-
-
-
         #endregion
 
 
