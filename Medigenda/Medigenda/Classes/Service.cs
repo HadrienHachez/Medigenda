@@ -47,9 +47,9 @@ namespace Medigenda
         }
 
         //Returns the name of the service
-        public string getName()
+        public string getName
         {
-            return this.service_name.Service_name;
+            get { return this.service_name.Service_name; }
         }
 
        

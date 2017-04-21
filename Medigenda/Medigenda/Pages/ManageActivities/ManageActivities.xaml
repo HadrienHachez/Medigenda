@@ -6,8 +6,44 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add"     Label="Add "     Command="{Binding AddButton}"/>
+            <AppBarButton Icon="Delete"  Label="Delete "  Command="{Binding DeleteButton}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <autogenerator:AutoGenerator Margin="24" x:Name="autogenerator" IsTitleEnabled="True"  TitleForm="My Student"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <ListView
+                Grid.Row="1"
+                ItemsSource="{Binding ActivitiesListing, Mode=TwoWay}"
+                SelectedItem="{Binding SelectedActivity, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- List Content-->
+                        <TextBlock Text="{Binding getName, Mode=TwoWay}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <!-- Form Content -->
+        <StackPanel Grid.Column="1">
+            <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedActivity, Mode=TwoWay}"/>
+            <ItemsControl ItemsSource="{Binding SelectedWorker.Skills}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Service.Service_name, Mode=TwoWay}" IsChecked="{Binding HaveThisSkills }" Command="{Binding CheckCommand}"></CheckBox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </Page>
