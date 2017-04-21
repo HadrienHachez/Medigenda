@@ -15,53 +15,39 @@ namespace Medigenda
     public class ManagePersonViewModel : PropertyChangeBase
     {
 
-        public RelayCommand CheckCommand { get; set; }
-        async private void CheckCommandExecute()
-        {
-            MessageDialog testing = new MessageDialog("CheckCommand");
-            await testing.ShowAsync();
-        }
+        public ObservableCollection<Worker> WorkerListing { get; set; } = new ObservableCollection<Worker>();
         private Worker selectedWorker;
-        public Worker SelectedWorker
-        {
-            get {
-                return selectedWorker; }
-            set
-            {
 
-                selectedWorker = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public Worker SelectedWorker2
-        {
-            get
-            {
-                return new Worker("Wéry", "Anélie", 14545); ;
-            }
-            set
-            {
-                NotifyPropertyChanged();
-            }
-        }
-
-
-
+       
         public ManagePersonViewModel()
         {
-            //Get Info
-            CheckCommand= new RelayCommand(CheckCommandExecute);
-            Worker BW = new Worker("Wéry", "Benoit", 14161);
-            Worker TS = new Worker("Selleslagh", "Tom", 14256);
-            this.WorkerListing.Add(BW);
-            this.WorkerListing.Add(TS);
-            
+            this.WorkerListing = GetWorkerListing();
         }
 
-        public ObservableCollection<Worker> WorkerListing { get; set; } = new ObservableCollection<Worker>();
-        
 
-        
+        #region Methods
+        public ObservableCollection<Worker> GetWorkerListing()
+        {
+            return new ObservableCollection<Worker>
+            {
+                 new Worker("Wéry", "Benoit", 14256),
+                 new Worker("Selleslagh", "Tom", 14161)
+            };
+
+        }
+        #endregion
+
+        #region Property
+        public Worker SelectedWorker
+        {
+            get {   return selectedWorker;}
+            set {
+                    selectedWorker = value;
+                    NotifyPropertyChanged();}
+        }
+
+        #endregion
+
+
     }
 }
