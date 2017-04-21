@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using AutoGenerateForm.Attributes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace Medigenda
 {
     public class Service
     {
         private ServiceName service_name;
-        private List<Shift> shifts = new List<Shift>();
+        private ObservableCollection<Shift> shifts = new ObservableCollection<Shift>();
 
         public Service(ServiceName service_name)
         {
@@ -65,7 +67,13 @@ namespace Medigenda
 
         /******* Tests *******/
 
+
         /******* Properties *******/
+        public ObservableCollection<Shift> ShiftListing
+        {
+            get { return this.shifts; }
+        }
+
         public ServiceName Service_name
         {
             get { return this.service_name; }

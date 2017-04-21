@@ -15,15 +15,13 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="10*" />
-            </Grid.RowDefinitions>
+        <Grid  Grid.Column="0">
+
             <ListView
-                Grid.Row="1"
+               
                 ItemsSource="{Binding ActivitiesListing, Mode=TwoWay}"
                 SelectedItem="{Binding SelectedActivity, Mode=TwoWay}">
                 <ListView.ItemTemplate>
@@ -34,16 +32,27 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-        <!-- Form Content -->
-        <StackPanel Grid.Column="1">
-            <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedActivity, Mode=TwoWay}"/>
-            <ItemsControl ItemsSource="{Binding SelectedWorker.Skills}">
-                <ItemsControl.ItemTemplate>
+        <Grid Grid.Column="1">
+            <ListView
+                
+                ItemsSource="{Binding SelectedActivity.ShiftListing, Mode=TwoWay}"
+                SelectedItem="{Binding SelectedShift, Mode=TwoWay}">
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <CheckBox Content="{Binding Service.Service_name, Mode=TwoWay}" IsChecked="{Binding HaveThisSkills }" Command="{Binding CheckCommand}"></CheckBox>
+                        <!-- List Content-->
+                        <TextBlock Text="{Binding Display, Mode=TwoWay}" />
                     </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <StackPanel Grid.Column="2">
+            
+            <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedShift, Mode=TwoWay}"/>
+
+
+            <TimePicker Time="{Binding SelectedShift.Start_hour}"></TimePicker>
+                 
+            
         </StackPanel>
     </Grid>
 </Page>

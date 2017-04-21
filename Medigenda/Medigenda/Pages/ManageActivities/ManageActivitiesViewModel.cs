@@ -14,7 +14,7 @@ namespace Medigenda
         public RelayCommand DeleteButton { get; set; }
 
         private Service selectedactivity;
-
+        private Shift selectedshift;
 
         public ManageActivitiesViewModel()
         {
@@ -28,12 +28,17 @@ namespace Medigenda
         public ObservableCollection<Service> GetActivitiesListing()
         {
             //Remove and Update when DB is available
-            return new ObservableCollection<Service>
+
+            Service CT = new Service(new ServiceName("CT"));
+            CT.createShift(new DateTime(2017,5,5), "8:00", "9:00", 2, 3,CT.Service_name);
+            ObservableCollection < Service > List = new ObservableCollection<Service>
             {
-                 new Service(new ServiceName("CT")),
                  new Service(new ServiceName("Radio")),
                  new Service(new ServiceName("Mammo")),
             };
+            List.Add(CT);
+            
+            return List;
 
         }
 
@@ -53,10 +58,21 @@ namespace Medigenda
         #region Property
         public Service SelectedActivity
         {
-            get { return selectedactivity; ; }
+            get { return selectedactivity;}
             set
             {
                 selectedactivity = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        public Shift SelectedShift
+        {
+            get { return selectedshift;}
+            set
+            {
+                selectedshift = value;
                 NotifyPropertyChanged();
             }
         }

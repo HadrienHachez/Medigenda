@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoGenerateForm.Attributes;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Medigenda
 {
-    public class Shift
+    public class Shift : PropertyChangeBase
     {
         private double date;
         private DateTime start_hour, end_hour;
         private List<Worker> workers;
         private int min_workers, opt_workers;
         private ServiceName service_name;
+        private string display;
 
         //Format of the paramaters "start" and "end" corresponding to hours: HH:mm
         public Shift(DateTime date, string start,string end, int min, int opt, ServiceName serv_name)
@@ -31,6 +33,8 @@ namespace Medigenda
             this.opt_workers = opt;
 
             this.service_name = serv_name;
+
+            this.display = start + "-" + end; 
         }
 
         /*Assigns a new worker "wo" to this shift
@@ -97,22 +101,36 @@ namespace Medigenda
             set { this.start_hour = value; }
         }
 
+
         public DateTime End_hour
         {
             get { return this.end_hour; }
             set { this.end_hour = value; }
         }
 
+        
+        [AutoGenerateProperty]
+        [IsNumeric]
+        [Display("Minimal Needed Workers")]
         public int Min_workers
         {
             get { return this.min_workers; }
             set { this.min_workers = value; }
         }
 
+       
+        [AutoGenerateProperty]
+        [IsNumeric]
+        [Display("Optimal Workers")]
         public int Opt_workers
         {
             get { return this.opt_workers; }
             set { this.opt_workers = value; }
+        }
+
+        public string Display
+        { 
+            get { return this.display;}
         }
     }
 }
