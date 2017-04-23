@@ -9,23 +9,20 @@ namespace Medigenda
 {
     public class Shift : PropertyChangeBase
     {
-        private double date;
-        private DateTime start_hour, end_hour;
+        private TimeSpan start_hour, end_hour;
         private List<Worker> workers;
         private int min_workers, opt_workers;
         private ServiceName service_name;
         private string display;
 
         //Format of the paramaters "start" and "end" corresponding to hours: HH:mm
-        public Shift(DateTime date, string start,string end, int min, int opt, ServiceName serv_name)
-        {   
-            string[] start_hour_params = start.Split(':');
-            string[] end_hour_params = end.Split(':');
+        public Shift(string start,string end, int min, int opt, ServiceName serv_name)
+        {
 
             //Both days are set to 0000/00/00 because only the hours are important here
             /*!!!!!Peut-être pas... travailler avec la date complète*/
-            this.start_hour = new DateTime(date.Year, date.Month, date.Day, Int16.Parse(start_hour_params[0]), Int16.Parse(start_hour_params[1]), 0);
-            this.end_hour = new DateTime(date.Year, date.Month, date.Day, Int16.Parse(end_hour_params[0]), Int16.Parse(end_hour_params[1]), 0);
+            this.start_hour = ConvertStringToTimeSpan(start);
+            this.end_hour = ConvertStringToTimeSpan(end);
 
             //this.date = date.ToOADate();
 
@@ -35,6 +32,13 @@ namespace Medigenda
             this.service_name = serv_name;
 
             this.display = start + "-" + end; 
+        }
+
+        public TimeSpan ConvertStringToTimeSpan(string myinput)
+        {
+            string[] my_input_params = myinput.Split(':');
+            return new TimeSpan(Int16.Parse(my_input_params[0]), Int16.Parse(my_input_params[1]), 0);
+            
         }
 
         /*Assigns a new worker "wo" to this shift
@@ -95,20 +99,18 @@ namespace Medigenda
 
 
         /******* Properties ********/
-        public DateTime Start_hour
+        public TimeSpan Start_hour
         {
             get { return this.start_hour; }
             set { this.start_hour = value; }
         }
 
-
-        public DateTime End_hour
+        public TimeSpan End_hour
         {
             get { return this.end_hour; }
             set { this.end_hour = value; }
         }
 
-        
         [AutoGenerateProperty]
         [IsNumeric]
         [Display("Minimal Needed Workers")]

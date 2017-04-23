@@ -30,7 +30,8 @@ namespace Medigenda
             //Remove and Update when DB is available
 
             Service CT = new Service(new ServiceName("CT"));
-            CT.createShift(new DateTime(2017,5,5), "8:00", "9:00", 2, 3,CT.Service_name);
+            CT.createShift("8:15", "23:59", 2, 3,CT.Service_name);
+            CT.createShift("13:00", "20:00", 2, 3, CT.Service_name);
             ObservableCollection < Service > List = new ObservableCollection<Service>
             {
                  new Service(new ServiceName("Radio")),
@@ -56,6 +57,15 @@ namespace Medigenda
         #endregion
 
         #region Property
+        private DateTime someDateTime = new DateTime(1985, 2, 8, 13, 20, 00);
+
+        public DateTime SomeDateTime
+        {
+            get { return someDateTime; }
+            set { someDateTime = value; }
+        }
+
+
         public Service SelectedActivity
         {
             get { return selectedactivity;}

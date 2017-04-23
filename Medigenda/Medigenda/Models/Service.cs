@@ -24,9 +24,9 @@ namespace Medigenda
          * @pre - 
          * @post - the list and the database are uptdated
          */
-        public void createShift(DateTime date, string start_hour, string end_hour, int min_wo, int opt_wo, ServiceName serv_name)
+        public void createShift(string start_hour, string end_hour, int min_wo, int opt_wo, ServiceName serv_name)
         {
-            Shift new_shit = new Shift(date, start_hour, end_hour, min_wo, opt_wo, this.service_name);
+            Shift new_shit = new Shift(start_hour, end_hour, min_wo, opt_wo, this.service_name);
             this.shifts.Add(new_shit);
             //UPDATE DB//
         }
