@@ -12,9 +12,9 @@ namespace Medigenda
         public ObservableCollection<Service> ActivitiesListing { get; set; } = new ObservableCollection<Service>();
         public RelayCommand AddButton { get; set; }
         public RelayCommand DeleteButton { get; set; }
-
         private Service selectedactivity;
         private Shift selectedshift;
+        
 
         public ManageActivitiesViewModel()
         {
@@ -57,14 +57,22 @@ namespace Medigenda
         #endregion
 
         #region Property
-        private DateTime someDateTime = new DateTime(1985, 2, 8, 13, 20, 00);
 
-        public DateTime SomeDateTime
+        public string TimePickerVisibilty
         {
-            get { return someDateTime; }
-            set { someDateTime = value; }
+            get
+            {
+                if (SelectedShift == null)
+                {
+                    NotifyPropertyChanged();
+                    return "Collapsed";
+                    
+                }
+                NotifyPropertyChanged();
+                return "Visible";
+                
+            }
         }
-
 
         public Service SelectedActivity
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using AutoGenerateForm.Attributes;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace Medigenda
 {
@@ -15,10 +16,23 @@ namespace Medigenda
         private ServiceName service_name;
         private string display;
 
+        private ObservableCollection<OpenWeekDay> opening_day = new ObservableCollection<OpenWeekDay>
+        {
+            new OpenWeekDay(DayOfWeek.Monday),
+            new OpenWeekDay(DayOfWeek.Tuesday),
+            new OpenWeekDay(DayOfWeek.Wednesday),
+            new OpenWeekDay(DayOfWeek.Thursday),
+            new OpenWeekDay(DayOfWeek.Friday),
+            new OpenWeekDay(DayOfWeek.Saturday),
+            new OpenWeekDay(DayOfWeek.Sunday),
+        };
+
+        
+
+
         //Format of the paramaters "start" and "end" corresponding to hours: HH:mm
         public Shift(string start,string end, int min, int opt, ServiceName serv_name)
         {
-
             //Both days are set to 0000/00/00 because only the hours are important here
             /*!!!!!Peut-être pas... travailler avec la date complète*/
             this.start_hour = ConvertStringToTimeSpan(start);
@@ -99,6 +113,13 @@ namespace Medigenda
 
 
         /******* Properties ********/
+        public ObservableCollection<OpenWeekDay> Opening_Day
+        {
+            get { return this.opening_day; }
+            set { this.opening_day = value; }
+        }
+
+
         public TimeSpan Start_hour
         {
             get { return this.start_hour; }

@@ -48,13 +48,18 @@
         
         
         <StackPanel Grid.Column="2">
-            
             <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedShift, Mode=TwoWay}"/>
-
-
-
-            <TimePicker Header="Beginning of The Shift"  Time="{Binding SelectedShift.Start_hour, Mode=TwoWay}"></TimePicker>
-            <TimePicker Header="End of The Shift" Time="{Binding SelectedShift.End_hour, Mode=TwoWay}"></TimePicker>
+            
+            <TimePicker  Header="Beginning of The Shift"  Time="{Binding SelectedShift.Start_hour, Mode=TwoWay}"></TimePicker>
+            <TimePicker  Header="End of The Shift" Time="{Binding SelectedShift.End_hour, Mode=TwoWay}"></TimePicker>
+ 
+            <ItemsControl ItemsSource="{Binding  SelectedShift.Opening_Day}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding DisplayDay}" IsChecked="{Binding IsOpen }" Command="{Binding CheckCommand}"></CheckBox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
     </Grid>
 </Page>

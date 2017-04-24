@@ -99,6 +99,7 @@
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Generator.cs" />
     <Compile Include="Models\HaveSkills.cs" />
+    <Compile Include="Models\OpenWeekDay.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PropertyChangeBase.cs" />
     <Compile Include="Models\RelayCommand.cs" />
