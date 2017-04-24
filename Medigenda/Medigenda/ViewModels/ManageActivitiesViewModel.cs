@@ -57,23 +57,6 @@ namespace Medigenda
         #endregion
 
         #region Property
-
-        public string TimePickerVisibilty
-        {
-            get
-            {
-                if (SelectedShift == null)
-                {
-                    NotifyPropertyChanged();
-                    return "Collapsed";
-                    
-                }
-                NotifyPropertyChanged();
-                return "Visible";
-                
-            }
-        }
-
         public Service SelectedActivity
         {
             get { return selectedactivity;}

@@ -114,15 +114,15 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ManageActivities\ManageActivities.xaml.cs">
+    <Compile Include="View\ManageActivities\ManageActivities.xaml.cs">
       <DependentUpon>ManageActivities.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ManageActivities\ManageActivitiesViewModel.cs" />
-    <Compile Include="Pages\ManagePerson\ManagePersonViewModel.cs" />
-    <Compile Include="Pages\ManagePerson\ManagePerson.xaml.cs">
+    <Compile Include="ViewModels\ManageActivitiesViewModel.cs" />
+    <Compile Include="ViewModels\ManagePersonViewModel.cs" />
+    <Compile Include="View\ManagePerson\ManagePerson.xaml.cs">
       <DependentUpon>ManagePerson.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ManageTimeSlots\ManageTimeSlots.xaml.cs">
+    <Compile Include="View\ManageTimeSlots\ManageTimeSlots.xaml.cs">
       <DependentUpon>ManageTimeSlots.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,15 +154,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ManageActivities\ManageActivities.xaml">
+    <Page Include="View\ManageActivities\ManageActivities.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ManagePerson\ManagePerson.xaml">
+    <Page Include="View\ManagePerson\ManagePerson.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ManageTimeSlots\ManageTimeSlots.xaml">
+    <Page Include="View\ManageTimeSlots\ManageTimeSlots.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

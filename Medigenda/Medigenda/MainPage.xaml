@@ -58,10 +58,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Grid.Row="0" Background="White">
-            <TextBlock Text="Month" />
+            <Button></Button>
+            <TextBlock Text=""/>
+            <Button></Button>
         </Grid>
-
-        <ItemsControl ItemsSource="{x:Bind May}" Grid.Column="1">
+<!--
+        <ItemsControl ItemsSource="{x:Bind Month}" Grid.Column="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
@@ -74,7 +76,7 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-
+-->
 
 
         <StackPanel Name = "Worker" Grid.Column="0" Grid.Row="1" Background="lightYellow"></StackPanel>
