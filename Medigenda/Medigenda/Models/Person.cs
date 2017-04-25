@@ -43,7 +43,8 @@ namespace Medigenda
         public string First_name
         {
             get { return this.first_name; }
-            set { this.first_name = value; }
+            set { this.first_name = value;
+                   NotifyPropertyChanged(First_name); }
         }
 
         [AutoGenerateProperty]
@@ -52,7 +53,9 @@ namespace Medigenda
         public string Last_name
         {
             get { return this.last_name; }
-            set { this.last_name = value; }
+            set { this.last_name = value;
+                NotifyPropertyChanged(Last_name);
+            }
         }
 
         [AutoGenerateProperty]

@@ -48,8 +48,9 @@ namespace Medigenda
         {
 
             //Needed To Bind some Data throught Xaml.cs and Xaml files
-            this.DataContext = this;
+            
             this.InitializeComponent();
+            this.DataContext = new MainPageViewModel();
 
             #region As long as the database is not available
 

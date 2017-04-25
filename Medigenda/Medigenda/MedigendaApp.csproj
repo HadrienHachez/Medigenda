@@ -114,6 +114,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="View\ManageActivities\ManageActivities.xaml.cs">
       <DependentUpon>ManageActivities.xaml</DependentUpon>
     </Compile>

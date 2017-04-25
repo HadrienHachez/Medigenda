@@ -58,11 +58,14 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Grid.Row="0" Background="White">
-            <Button></Button>
-            <TextBlock Text=""/>
-            <Button></Button>
+            <StackPanel Orientation="Horizontal">
+                <Button FontFamily="Segoe MDL2 Assets" Content="&#xE00E;" Width="30" Height="30" Command="{Binding  PreviousButton}"></Button>
+                <TextBlock Text="{Binding DisplayMonth, Mode=OneWay}"/>
+                <Button FontFamily="Segoe MDL2 Assets" Content="&#xE00F;" Width="30" Height="30" Command="{Binding NextButton}"></Button>
+            </StackPanel>
+
         </Grid>
-<!--
+        <!--
         <ItemsControl ItemsSource="{x:Bind Month}" Grid.Column="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
