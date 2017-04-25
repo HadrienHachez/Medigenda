@@ -9,7 +9,8 @@ namespace Medigenda
 {
     class ManageActivitiesViewModel : PropertyChangeBase
     {
-        public ObservableCollection<Service> ActivitiesListing { get; set; } = new ObservableCollection<Service>();
+       
+        private ObservableCollection<Service> activitieslisting;
         public RelayCommand AddButton { get; set; }
         public RelayCommand DeleteButton { get; set; }
         private Service selectedactivity;
@@ -57,6 +58,17 @@ namespace Medigenda
         #endregion
 
         #region Property
+        public ObservableCollection<Service> ActivitiesListing
+        {
+            get { return this.activitieslisting; }
+            set
+            {
+                this.activitieslisting = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
         public Service SelectedActivity
         {
             get { return selectedactivity;}

@@ -44,8 +44,6 @@ namespace Medigenda
             this.opt_workers = opt;
 
             this.service_name = serv_name;
-
-            this.display = start + "-" + end; 
         }
 
         public TimeSpan ConvertStringToTimeSpan(string myinput)
@@ -123,13 +121,20 @@ namespace Medigenda
         public TimeSpan Start_hour
         {
             get { return this.start_hour; }
-            set { this.start_hour = value; }
+            set {
+                  this.start_hour = value;
+                  NotifyPropertyChanged();
+            }
         }
 
         public TimeSpan End_hour
         {
             get { return this.end_hour; }
-            set { this.end_hour = value; }
+            set
+            {
+                this.end_hour = value;
+                NotifyPropertyChanged();
+            }
         }
 
         [AutoGenerateProperty]
@@ -149,11 +154,6 @@ namespace Medigenda
         {
             get { return this.opt_workers; }
             set { this.opt_workers = value; }
-        }
-
-        public string Display
-        { 
-            get { return this.display;}
         }
     }
 }

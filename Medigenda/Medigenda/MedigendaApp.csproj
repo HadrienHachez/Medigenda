@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Converter.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Generator.cs" />
     <Compile Include="Models\HaveSkills.cs" />
