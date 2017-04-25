@@ -14,8 +14,9 @@ namespace Medigenda
 {
     public class ManagePersonViewModel : PropertyChangeBase
     {
+        private ObservableCollection<Worker> workerlisting;
+       
 
-        public ObservableCollection<Worker> WorkerListing { get; set; } = new ObservableCollection<Worker>();
         public RelayCommand AddButton { get; set; }
         public RelayCommand DeleteButton { get; set; }
 
@@ -36,14 +37,15 @@ namespace Medigenda
             //Remove and Update when DB is available
             return new ObservableCollection<Worker>
             {
-                 new Worker("Wéry", "Benoit", 14256),
-                 new Worker("Selleslagh", "Tom", 14161)
+                 new Worker("Benoit", "Wéry", 14256),
+                 new Worker("Tom", "Sellelsagh", 14161)
             };
 
         }
 
         public void AddButtonExecute()
         {
+            
             this.WorkerListing.Add(new Worker("Firstname", "Lastname", 0));
         }
 
@@ -62,6 +64,19 @@ namespace Medigenda
             set {
                     selectedWorker = value;
                     NotifyPropertyChanged();}
+        }
+
+        public ObservableCollection<Worker> WorkerListing
+        {
+            get
+            {
+                return this.workerlisting;
+            }
+            set
+            {
+                this.workerlisting = value;
+                NotifyPropertyChanged();
+            }
         }
         #endregion
 

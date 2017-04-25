@@ -32,7 +32,7 @@
             </Grid.RowDefinitions>
             <ListView
                 Grid.Row="1"
-                ItemsSource="{Binding WorkerListing, Mode=TwoWay}"
+                ItemsSource="{Binding WorkerListing, Mode=TwoWay}" 
                 SelectedItem="{Binding SelectedWorker, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

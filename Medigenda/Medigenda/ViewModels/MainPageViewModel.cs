@@ -24,11 +24,11 @@ namespace Medigenda
             get
             {
    
-                return currentdate;
+                return this.currentdate;
             }
             set
             {
-                currentdate = value;
+                this.currentdate = value;
                 NotifyPropertyChanged();
             }
         }
@@ -38,11 +38,11 @@ namespace Medigenda
         {
             get
             {
-                return display;
+                return this.display;
             }
             set
             {
-                display = value;
+                this.display = value;
                 NotifyPropertyChanged();
 
             }

@@ -44,7 +44,7 @@ namespace Medigenda
         {
             get { return this.first_name; }
             set { this.first_name = value;
-                   NotifyPropertyChanged(First_name); }
+                   NotifyPropertyChanged(); }
         }
 
         [AutoGenerateProperty]
@@ -54,7 +54,7 @@ namespace Medigenda
         {
             get { return this.last_name; }
             set { this.last_name = value;
-                NotifyPropertyChanged(Last_name);
+                NotifyPropertyChanged();
             }
         }
 
