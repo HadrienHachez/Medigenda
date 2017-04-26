@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace Medigenda
 {
-    public class Day
+    public class Day : PropertyChangeBase
     {
         private DateTime date_time;
-        private double date_double;
+        private ObservableCollection<Worker> workerlisting;
         private List<Service> services = new List<Service>();
         private Dictionary<String, Worker> present_workers = new Dictionary<string, Worker>();
         private List<Worker> available_workers = new List<Worker>();
+
 
         //The format of the date must be YY:MM:DD -> example: "2017:03:12"
         public Day(DateTime date)
         {
             this.date_time = date;
+            this.WorkerListing = GetWorkerListing();
         }
 
+       
 
         /******* Methods *******/
 
@@ -27,6 +31,7 @@ namespace Medigenda
          * @pre - wo must exist
          * @post - 
          */
+
         public bool isPresent(Worker wo)
         {
             bool is_present = true;
@@ -70,37 +75,41 @@ namespace Medigenda
             return null;
         }
 
-        public double convertDateToDouble()
-        {   
-            if (this.date_double == default(double))
-            {
-                //this.date_double  =  this.date_time.ToOADate();
-            }
 
-            return this.date_double;
-        }
 
 
         //Displays information about the day !!!!!! N'est valable que en mode développement console -> aide pour progra
-        public void displayInfo()
-        {
-           /* Console.WriteLine("Date: " + this.date_time.ToString("D"));
-            Console.WriteLine("Services: ");
-            foreach(Service serv in services)
-            {
-                Console.WriteLine("\t- " + serv.getName());
-            }
 
-            Console.WriteLine("Present workers: ");
-            foreach(Worker wo in available_workers)
+
+        public ObservableCollection<Worker> GetWorkerListing()
+        {
+            //Remove and Update when DB is available
+            return new ObservableCollection<Worker>
             {
-                Console.WriteLine("\t- " + wo.First_name + " " + wo.Last_name);
-            }*/
+                 new Worker("Benoit", "Wéry", 14256),
+                 new Worker("Tom", "Sellelsagh", 14161)
+            };
+
         }
 
         /******* Tests *******/
 
         /******* Properties *******/
+
+        public ObservableCollection<Worker> WorkerListing
+        {
+            get
+            {
+                return this.workerlisting;
+            }
+            set
+            {
+                this.workerlisting = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
         public DateTime Date_time
         {
             get { return this.date_time; }

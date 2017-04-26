@@ -52,12 +52,12 @@
     <!-- Main Page - Global View of the Team Schedule -->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Grid.Row="0" Background="White">
             <StackPanel Orientation="Horizontal">
@@ -68,7 +68,7 @@
 
         </Grid>
 
-        <ItemsControl ItemsSource="{Binding DayListing}" Grid.Column="1">
+        <ItemsControl ItemsSource="{Binding DayListing}" Grid.Column="1" Grid.Row="0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
@@ -76,14 +76,48 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding Date_time,Mode=OneWay,Converter={StaticResource NumDay}}" Width="Auto"/>
+                    <Button Content="{Binding Date_time,Mode=OneWay,Converter={StaticResource NumDay}}" Width="40"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+        <ItemsControl ItemsSource="{Binding WorkerListing}" Grid.Column="0" Grid.Row="1">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Last_name,Mode=OneWay}"  Height="40"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
-        <StackPanel Name = "Worker" Grid.Column="0" Grid.Row="1" Background="lightYellow"></StackPanel>
-        <StackPanel Name = "Schedule" Grid.Row="1" Grid.Column="1" Background="LightGray"></StackPanel>
+        <ItemsControl ItemsSource="{Binding DayListing}" Grid.Column="1" Grid.Row="1">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding WorkerListing}" Grid.Column="1" Grid.Row="1">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Last_name,Mode=OneWay}" Width="40" Height="40"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
     </Grid>
 </Page>
 <!-- https://blogs.msdn.microsoft.com/devschool/2015/06/25/wpf-project-that-uses-mysql/ -->

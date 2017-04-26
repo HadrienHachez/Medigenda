@@ -12,17 +12,23 @@ namespace Medigenda
     {
 
         private ObservableCollection<Day> daylisting;
-        
+       
+
         private DateTime currentdate;
         public MainPageViewModel()
         {
             PreviousButton = new RelayCommand(PreviousButtonExecute);
             NextButton = new RelayCommand(NextButtonExecute);
             this.CurrentDate = DateTime.Now;
+            
                       
      }
 
+        #region Methods
 
+        #endregion
+
+        #region Property
         public DateTime CurrentDate
         {
             get
@@ -42,6 +48,8 @@ namespace Medigenda
             }
         }
 
+
+        
         public ObservableCollection<Day> DayListing
         {
             get
@@ -55,6 +63,15 @@ namespace Medigenda
             }
         }
 
+
+        public ObservableCollection<Worker> WorkerListing
+        {
+            get
+            { return DayListing[0].WorkerListing; }
+        }
+        #endregion
+
+        #region Property-Method Relays
         public RelayCommand PreviousButton { get; set; }
         private void PreviousButtonExecute()
         {
@@ -66,8 +83,8 @@ namespace Medigenda
         {
             this.CurrentDate = this.CurrentDate.AddMonths(+1);
         }
+        #endregion
 
 
-       
     }
 }
