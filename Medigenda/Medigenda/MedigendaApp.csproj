@@ -96,14 +96,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\Converter.cs" />
+    <Compile Include="Models\lib\Converter.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Generator.cs" />
     <Compile Include="Models\HaveSkills.cs" />
     <Compile Include="Models\OpenWeekDay.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\PropertyChangeBase.cs" />
-    <Compile Include="Models\RelayCommand.cs" />
+    <Compile Include="Models\lib\PropertyChangeBase.cs" />
+    <Compile Include="Models\lib\RelayCommand.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\ServiceName.cs" />
     <Compile Include="Models\Shift.cs" />

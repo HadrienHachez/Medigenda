@@ -4,20 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
+using System.Collections.ObjectModel;
 
 namespace Medigenda
 {
     class MainPageViewModel : PropertyChangeBase
     {
+
+        private ObservableCollection<Day> daylisting;
+        
         private DateTime currentdate;
         public MainPageViewModel()
         {
             PreviousButton = new RelayCommand(PreviousButtonExecute);
             NextButton = new RelayCommand(NextButtonExecute);
             this.CurrentDate = DateTime.Now;
-            this.DisplayMonth = this.CurrentDate.ToString("MMMM");
+                      
+     }
 
-        }
 
         public DateTime CurrentDate
         {
@@ -29,39 +33,38 @@ namespace Medigenda
             set
             {
                 this.currentdate = value;
+                this.DayListing = new ObservableCollection<Day>();
+                for (int i = 1; i <= DateTime.DaysInMonth(CurrentDate.Year, CurrentDate.Month); i++)
+                {
+                    this.DayListing.Add(new Day(new DateTime(this.CurrentDate.Year, this.CurrentDate.Month, i)));
+                }
                 NotifyPropertyChanged();
             }
         }
 
-        private string display;
-        public string DisplayMonth
+        public ObservableCollection<Day> DayListing
         {
             get
             {
-                return this.display;
+                return this.daylisting;
             }
             set
             {
-                this.display = value;
+                this.daylisting = value;
                 NotifyPropertyChanged();
-
             }
         }
-
-
 
         public RelayCommand PreviousButton { get; set; }
         private void PreviousButtonExecute()
         {
             this.CurrentDate = this.CurrentDate.AddMonths(-1);
-            this.DisplayMonth = this.CurrentDate.ToString("MMMM"); 
         }
 
         public RelayCommand NextButton { get; set; }
         private void NextButtonExecute()
         {
             this.CurrentDate = this.CurrentDate.AddMonths(+1);
-            this.DisplayMonth = this.CurrentDate.ToString("MMMM");
         }
 
 
