@@ -20,6 +20,11 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel;
 using AutoGenerateForm.Uwp;
 using AutoGenerateForm.Attributes;
+using Windows.UI.Xaml;
+using Windows.ApplicationModel.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI.Core;
+using Windows.UI.Xaml.Controls;
 
 
 
@@ -57,6 +62,7 @@ namespace Medigenda
             #endregion
         }
 
+        
         #region DragAndDropProprty
         //DragAndDrop trought two ListViews
         private void ListPerson_DragItemsStarting(object sender, Windows.UI.Xaml.Controls.DragItemsStartingEventArgs e)

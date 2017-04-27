@@ -76,7 +76,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding Date_time,Mode=OneWay,Converter={StaticResource NumDay}}" Width="40"/>
+                    <Button Command="{Binding OpenContentDialogBox}"  Content="{Binding Date_time,Mode=OneWay,Converter={StaticResource NumDay}}" Width="40"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -89,7 +89,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Worker.Last_name,Mode=OneWay}"  Height="40"/>
+                    <TextBlock Text="{Binding Worker,Mode=OneWay}"  Height="40"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -110,7 +110,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding IsPresent,Mode=OneWay}" Width="40" Height="40" Command="{Binding Vacation}" Background="{Binding BackgroundButtonColor,Mode=TwoWay}"/>
+                                <Button Content="{Binding Worker,Mode=OneWay}" Width="40" Height="40" Command="{Binding Vacation}" Background="{Binding BackgroundButtonColor,Mode=TwoWay}"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -118,6 +118,7 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+       
     </Grid>
 </Page>
 <!-- https://blogs.msdn.microsoft.com/devschool/2015/06/25/wpf-project-that-uses-mysql/ -->

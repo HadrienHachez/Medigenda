@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using System.Collections.ObjectModel;
+using Windows.UI.Xaml;
+using Windows.ApplicationModel.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI.Core;
+using Windows.UI.Xaml.Controls;
 
 namespace Medigenda
 {
@@ -12,6 +17,7 @@ namespace Medigenda
     {
 
         private ObservableCollection<Day> daylisting;
+
        
 
         private DateTime currentdate;
@@ -19,6 +25,7 @@ namespace Medigenda
         {
             PreviousButton = new RelayCommand(PreviousButtonExecute);
             NextButton = new RelayCommand(NextButtonExecute);
+            
             this.CurrentDate = DateTime.Now;
             
                       
@@ -48,7 +55,7 @@ namespace Medigenda
             }
         }
 
-
+        
         
         public ObservableCollection<Day> DayListing
         {

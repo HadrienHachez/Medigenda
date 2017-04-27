@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using Windows.ApplicationModel.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI.Core;
+using Windows.UI.Xaml.Controls;
 
 namespace Medigenda
 {
@@ -14,12 +19,12 @@ namespace Medigenda
         private DateTime currentdate;
         public WorkerInfoByDay(Worker worker,DateTime date)
         {
+            this.Worker = worker;
             this.IsPresent = true;
             this.currentdate = date;
             Vacation = new RelayCommand(VacationExecute);
             this.BackgroundButtonColor = GetColor;
         }
-
 
         #region Property
         public Worker Worker
@@ -57,6 +62,7 @@ namespace Medigenda
         {
             this.IsPresent = this.IsPresent ? false : true;
             this.BackgroundButtonColor = GetColor;
+            
         }
         #endregion
 
