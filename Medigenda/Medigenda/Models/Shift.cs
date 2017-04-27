@@ -11,7 +11,7 @@ namespace Medigenda
     public class Shift : PropertyChangeBase
     {
         private TimeSpan start_hour, end_hour;
-        private List<Worker> workers;
+        private ObservableCollection<Worker> workers;
         private int min_workers, opt_workers;
         private ServiceName service_name;
         private string display;
@@ -37,7 +37,7 @@ namespace Medigenda
             /*!!!!!Peut-être pas... travailler avec la date complète*/
             this.start_hour = ConvertStringToTimeSpan(start);
             this.end_hour = ConvertStringToTimeSpan(end);
-
+            this.Workers = new ObservableCollection<Worker>();
             //this.date = date.ToOADate();
 
             this.min_workers = min;
@@ -111,6 +111,14 @@ namespace Medigenda
 
 
         /******* Properties ********/
+
+
+        public ObservableCollection<Worker> Workers
+        {
+            get { return this.workers ; }
+            set { this.workers = value; }
+        }
+
         public ObservableCollection<OpenWeekDay> Opening_Day
         {
             get { return this.opening_day; }

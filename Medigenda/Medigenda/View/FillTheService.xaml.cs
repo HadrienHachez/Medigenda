@@ -24,23 +24,14 @@ namespace Medigenda
         {
             this.InitializeComponent();
             this.Available = new ObservableCollection<Worker>();
+            this.ListOfService = new ObservableCollection<Service>();
             AvailableWorker.ItemsSource = this.Available;
-        }
-
-        private string text = "Test";
-        public string Text
-        {
-            get
-            {
-                return this.text;
-            }
-            set
-            {
-                this.text = value;
-            }
+            Service.ItemsSource = this.ListOfService;
         }
 
        
+
+        public ObservableCollection<Service> ListOfService { get; set;}
         public ObservableCollection<Worker> Available {get; set;}
         
 

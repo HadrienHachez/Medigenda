@@ -1,5 +1,6 @@
 ﻿<ContentDialog
     x:Class="Medigenda.FillTheService"
+    xmlns:conv="using:Medigenda.Converter" 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Medigenda"
@@ -11,18 +12,70 @@
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
+    <ContentDialog.Resources>
+        <conv:TimeSpanHourAndMinuteDisplay x:Key="TimeConverter"/>
+    </ContentDialog.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="AvailableWorker" >
-            <ListView.ItemTemplate>
+        
+        <ItemsControl x:Name="Service" Grid.Column="0">
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical"/>
+            </ItemsPanelTemplate>
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <!-- List Content-->
-                    <TextBlock Text="{Binding Last_name, Mode=TwoWay}" />
+                    <StackPanel>
+                    <TextBlock Text="{Binding Service_name.Service_name}"> </TextBlock>
+                        <ItemsControl ItemsSource="{Binding ShiftListing}" Grid.Column="0">
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Start_hour, Mode=TwoWay,Converter={StaticResource TimeConverter}}"/>
+                                            <TextBlock Text=" - "/>
+                                            <TextBlock Text="{Binding End_hour, Mode=TwoWay,Converter={StaticResource TimeConverter}}" />
+                                        </StackPanel>
+                                        <TextBlock Text="00"></TextBlock>
+                                        <ItemsControl ItemsSource="{Binding Workers}" Grid.Column="0">
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical"/>
+                                            </ItemsPanelTemplate>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <TextBlock Text="000"></TextBlock>
+
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                    
+                                </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    </StackPanel>    
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Available Worker"></TextBlock>
+            <ListView x:Name="AvailableWorker">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- List Content-->
+                        <TextBlock Text="{Binding Last_name, Mode=TwoWay}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        
     </Grid>
 </ContentDialog>

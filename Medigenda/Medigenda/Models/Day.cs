@@ -16,41 +16,17 @@ namespace Medigenda
     {
         private DateTime date_time;
         private ObservableCollection<WorkerInfoByDay> infobyday;
-        private List<Service> services = new List<Service>();
-        private List<Worker> available_workers = new List<Worker>();
+        private ObservableCollection<Service> listofavailableservices = new ObservableCollection<Service>();
+      
 
-
-        //The format of the date must be YY:MM:DD -> example: "2017:03:12"
         public Day(DateTime date)
         {
             this.date_time = date;
             this.InfoByDay = GetWorkerListing();
+            this.ListOfAvailableService = GetServiceListing();
             OpenContentDialogBox = new RelayCommand(OpenContentDialogBoxExecute);
         }
 
-       
-
-
-        /* Adds a new service in the list "services" 
-         * @pre - serv must exist
-         * @post - the list "services" is updated and changes are saved in the database
-         */
-        public void addService(Service serv)
-        {
-            this.services.Add(serv);
-        }
-
-        /* Deletes the service from the list "services" 
-         * @pre - serv must exist
-         * @post - the list "services" is updated and changes are saved in the database
-         */
-        public void delService(Service serv)
-        {
-            if(this.services.Contains(serv))
-            {
-                this.services.Remove(serv);
-            }
-        }
 
         public WorkingDay getWorkingDay(Worker work)
         {
@@ -60,7 +36,22 @@ namespace Medigenda
 
 
 
-        //Displays information about the day !!!!!! N'est valable que en mode développement console -> aide pour progra
+        #region GetDataMethod
+        public ObservableCollection<Service> GetServiceListing()
+        {
+            //Remove and Update when DB is available
+            Service CT = new Service(new ServiceName("CT"));
+            CT.createShift("8:15", "23:59", 2, 3,CT.Service_name);
+            CT.createShift("13:00", "20:00", 2, 3, CT.Service_name);
+            CT.ShiftListing[0].addWorker(new Worker("Tom", "Tom", 44));
+            ObservableCollection<Service> List = new ObservableCollection<Service>
+            {
+                 new Service(new ServiceName("Radio")),
+                 new Service(new ServiceName("Mammo")),
+            };
+            List.Add(CT);
+            return List;
+        }
 
 
         public ObservableCollection<WorkerInfoByDay> GetWorkerListing()
@@ -77,10 +68,23 @@ namespace Medigenda
 
         }
 
+        #endregion
 
-        /******* Tests *******/
 
-        /******* Properties *******/
+
+        #region Property
+
+        public ObservableCollection<Service> ListOfAvailableService
+        {
+            get
+            {
+                return this.listofavailableservices;
+            }
+            set
+            {
+                this.listofavailableservices = value;
+            }
+        }
 
         public ObservableCollection<WorkerInfoByDay> InfoByDay
         {
@@ -95,9 +99,24 @@ namespace Medigenda
             }
         }
 
+        public DateTime Date_time
+        {
+            get { return this.date_time; }
+        }
+
+        #endregion
+
+
+
+
+
+
+
+
+        #region GuiProperty
         private FillTheService contentdialogbox = new FillTheService();
 
-        public FillTheService ContenDialogBox
+        public FillTheService ContentDialogBox
         {
             get { return contentdialogbox; }
             set { this.contentdialogbox = value; }
@@ -106,30 +125,21 @@ namespace Medigenda
         public RelayCommand OpenContentDialogBox { get; set; }
         private async void OpenContentDialogBoxExecute()
         {
-            ContenDialogBox = new FillTheService();
+            ContentDialogBox = new FillTheService();
             foreach (WorkerInfoByDay Info in InfoByDay)
             {
-               if (Info.IsPresent)
+                if (Info.IsPresent)
                 {
-                    ContenDialogBox.Available.Add(Info.Worker);
+                    ContentDialogBox.Available.Add(Info.Worker);
                 }
             }
-            await ContenDialogBox.ShowAsync();
+            foreach (Service Serv in ListOfAvailableService)
+                {
+                ContentDialogBox.ListOfService.Add(Serv);
+                }
+            ContentDialogBox.ListOfService = ListOfAvailableService;
+            await ContentDialogBox.ShowAsync();
         }
-
-        public DateTime Date_time
-        {
-            get { return this.date_time; }
-        }
-
-        public List<Service> Services
-        {
-            get { return this.services; }
-        }
-
-        
-        #region GuiProperty
-
 
         #endregion
 
