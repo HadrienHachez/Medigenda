@@ -100,11 +100,13 @@ namespace Medigenda
         public FillTheService ContenDialogBox
         {
             get { return contentdialogbox; }
+            set { this.contentdialogbox = value; }
         }
 
         public RelayCommand OpenContentDialogBox { get; set; }
         private async void OpenContentDialogBoxExecute()
         {
+            ContenDialogBox = new FillTheService();
             foreach (WorkerInfoByDay Info in InfoByDay)
             {
                if (Info.IsPresent)
