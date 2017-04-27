@@ -64,10 +64,10 @@ namespace Medigenda
         }
 
 
-        public ObservableCollection<Worker> WorkerListing
+        public ObservableCollection<WorkerInfoByDay> WorkerListing
         {
             get
-            { return DayListing[0].WorkerListing; }
+            { return DayListing[0].InfoByDay; }
         }
         #endregion
 

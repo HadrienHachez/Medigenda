@@ -110,6 +110,7 @@
     <Compile Include="Models\Testable.cs" />
     <Compile Include="Models\Tima.cs" />
     <Compile Include="Models\Worker.cs" />
+    <Compile Include="Models\WorkerInfoByDay.cs" />
     <Compile Include="Models\WorkingDay.cs" />
     <Compile Include="Models\WorkingShift.cs" />
     <Compile Include="MainPage.xaml.cs">

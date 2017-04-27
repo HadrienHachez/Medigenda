@@ -10,7 +10,7 @@ namespace Medigenda
     public class Day : PropertyChangeBase
     {
         private DateTime date_time;
-        private ObservableCollection<Worker> workerlisting;
+        private ObservableCollection<WorkerInfoByDay> infobyday;
         private List<Service> services = new List<Service>();
         private Dictionary<String, Worker> present_workers = new Dictionary<string, Worker>();
         private List<Worker> available_workers = new List<Worker>();
@@ -20,7 +20,7 @@ namespace Medigenda
         public Day(DateTime date)
         {
             this.date_time = date;
-            this.WorkerListing = GetWorkerListing();
+            this.InfoByDay = GetWorkerListing();
         }
 
        
@@ -81,13 +81,13 @@ namespace Medigenda
         //Displays information about the day !!!!!! N'est valable que en mode développement console -> aide pour progra
 
 
-        public ObservableCollection<Worker> GetWorkerListing()
+        public ObservableCollection<WorkerInfoByDay> GetWorkerListing()
         {
             //Remove and Update when DB is available
-            return new ObservableCollection<Worker>
+            return new ObservableCollection<WorkerInfoByDay>
             {
-                 new Worker("Benoit", "Wéry", 14256),
-                 new Worker("Tom", "Sellelsagh", 14161)
+                 new WorkerInfoByDay(new Worker("Benoit", "Wéry", 14256),this.Date_time),
+                 new WorkerInfoByDay(new Worker("Tom", "Sellelsagh", 14161),this.Date_time)
             };
 
         }
@@ -96,19 +96,20 @@ namespace Medigenda
 
         /******* Properties *******/
 
-        public ObservableCollection<Worker> WorkerListing
+        public ObservableCollection<WorkerInfoByDay> InfoByDay
         {
             get
             {
-                return this.workerlisting;
+                return this.infobyday;
             }
             set
             {
-                this.workerlisting = value;
+                this.infobyday = value;
                 NotifyPropertyChanged();
             }
         }
 
+        
 
         public DateTime Date_time
         {
@@ -120,8 +121,11 @@ namespace Medigenda
             get { return this.services; }
         }
 
-        
 
+        #region GuiProperty
+
+
+        #endregion
 
     }
 }

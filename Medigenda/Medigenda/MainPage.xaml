@@ -89,7 +89,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Last_name,Mode=OneWay}"  Height="40"/>
+                    <TextBlock Text="{Binding Worker.Last_name,Mode=OneWay}"  Height="40"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -102,7 +102,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <ItemsControl ItemsSource="{Binding WorkerListing}" Grid.Column="1" Grid.Row="1">
+                    <ItemsControl ItemsSource="{Binding InfoByDay}" Grid.Column="1" Grid.Row="1">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Vertical"/>
@@ -110,7 +110,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Last_name,Mode=OneWay}" Width="40" Height="40"/>
+                                <Button Content="{Binding IsPresent,Mode=OneWay}" Width="40" Height="40" Command="{Binding Vacation}" Background="{Binding BackgroundButtonColor,Mode=TwoWay}"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

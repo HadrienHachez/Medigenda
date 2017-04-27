@@ -183,6 +183,8 @@ namespace Medigenda
             get { return this.non_working_days; }
         }
         #endregion
+
+
     }
 
 }
