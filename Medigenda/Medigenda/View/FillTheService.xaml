@@ -10,34 +10,39 @@
     PrimaryButtonText="Button1"
     SecondaryButtonText="Button2"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+ 
+                    >
     <ContentDialog.Resources>
         <conv:TimeSpanHourAndMinuteDisplay x:Key="TimeConverter"/>
     </ContentDialog.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="240"/>
         </Grid.ColumnDefinitions>
         
-        <ItemsControl x:Name="Service" Grid.Column="0">
-            <ItemsPanelTemplate>
-                <StackPanel Orientation="Vertical"/>
-            </ItemsPanelTemplate>
+        <ItemsControl x:Name="Service">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+    
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" BorderBrush="Gray" BorderThickness="1">
-                        <TextBlock Text="{Binding Service_name.Service_name}" Width="100"> </TextBlock>
+                    <StackPanel>
+                    <TextBlock Text="{Binding Service_name.Service_name}" > </TextBlock>
                         <ItemsControl ItemsSource="{Binding ShiftListing}" Grid.Column="0">
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="20"/>
-                                            <RowDefinition MinHeight="20"/>
+                                            <RowDefinition MinHeight="60"/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Orientation="Horizontal" Grid.Row="0">
                                             <TextBlock Text="{Binding Start_hour, Mode=TwoWay,Converter={StaticResource TimeConverter}}"/>
@@ -56,17 +61,17 @@
                                                   DragOver="ListPerson_DragOver">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <!-- List Content-->
+
                                                     <TextBlock Text="{Binding Last_name, Mode=TwoWay}" />
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
 
                                         </ListView>
-                                     </Grid>
-                           </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    </StackPanel>    
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -85,12 +90,12 @@
                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <!-- List Content-->
+
                         <TextBlock Text="{Binding Last_name, Mode=TwoWay}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        
+
     </Grid>
 </ContentDialog>

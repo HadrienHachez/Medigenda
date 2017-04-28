@@ -31,6 +31,7 @@ namespace Medigenda
             this.ListOfService = new ObservableCollection<Service>();
             AvailableWorker.ItemsSource = this.Available;
             Service.ItemsSource = this.ListOfService;
+            
         }
 
        
