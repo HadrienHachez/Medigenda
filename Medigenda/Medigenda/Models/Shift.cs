@@ -14,8 +14,6 @@ namespace Medigenda
         private ObservableCollection<Worker> workers;
         private int min_workers, opt_workers;
         private ServiceName service_name;
-        private string display;
-
         private ObservableCollection<OpenWeekDay> opening_day = new ObservableCollection<OpenWeekDay>
         {
             new OpenWeekDay(DayOfWeek.Monday),
@@ -39,13 +37,13 @@ namespace Medigenda
             this.end_hour = ConvertStringToTimeSpan(end);
             this.Workers = new ObservableCollection<Worker>();
             //this.date = date.ToOADate();
-
             this.min_workers = min;
             this.opt_workers = opt;
-
             this.service_name = serv_name;
         }
 
+
+        #region Methods
         public TimeSpan ConvertStringToTimeSpan(string myinput)
         {
             string[] my_input_params = myinput.Split(':');
@@ -53,66 +51,15 @@ namespace Medigenda
             
         }
 
-        /*Assigns a new worker "wo" to this shift
-         * @pre - the size of the list "workers" has to be less than "opt_workers"
-         *        the worker "wo" has to be free for that period of time
-         * @post - the worker "wo" is added to the list "workers" and its schedule is updated
-         *         with a new WorkingShift
-         * */
-        public void addWorker(Worker wo)
-        {   
-            if(this.workers.Count()<=this.opt_workers)
-            {   
-                //!! Conversion répétitive des DateTime hours en double -> quel format(s) stocker?
-                /*if(wo.isFree(this.start_hour.ToOADate(), this.end_hour.ToOADate()))
-                {
-                    this.workers.Add(wo);
-                    wo.updateSchedule(this.date, this.service_name, this.start_hour.ToOADate(), this.end_hour.ToOADate());
-                }
-                else
-                {
-                    //DISPLAY ERROR???
-                }*/
-            }
-                
-            else
-            {
-                //DISPLAY ERROR???
-            }
-            
-        }
-
-        public void delWorker(Worker wo)
-        {
-
-        }
-
-        public void updateWorker(Worker wo)
-        {
-
-        }
-
-        public void getShiftDetails()
-        {
-
-        }
-
-        /* Returns the duration of the shift in minutes
-         * @pre -
-         * @post -
-         */ 
+       
         public int getSpan()
         {
             TimeSpan shift_duration = this.end_hour - this.start_hour;
             return shift_duration.Minutes;
         }
+        #endregion
 
-        /******* Tests *******/
-
-
-        /******* Properties ********/
-
-
+        #region Property
         public ObservableCollection<Worker> Workers
         {
             get { return this.workers ; }
@@ -163,5 +110,7 @@ namespace Medigenda
             get { return this.opt_workers; }
             set { this.opt_workers = value; }
         }
+
+        #endregion
     }
 }
