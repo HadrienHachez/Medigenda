@@ -43,7 +43,7 @@ namespace Medigenda
             Service CT = new Service(new ServiceName("CT"));
             CT.createShift("8:15", "23:59", 2, 3,CT.Service_name);
             CT.createShift("13:00", "20:00", 2, 3, CT.Service_name);
-            CT.ShiftListing[0].addWorker(new Worker("Tom", "Tom", 44));
+            CT.ShiftListing[0].Workers.Add(new Worker("Benoit", "Wéry", 12));
             ObservableCollection<Service> List = new ObservableCollection<Service>
             {
                  new Service(new ServiceName("Radio")),
