@@ -17,6 +17,7 @@ namespace Medigenda
         private Worker worker;
         private bool ispresent;
         private DateTime currentdate;
+        private WorkerSchedule workedtoday;
         public WorkerInfoByDay(Worker worker,DateTime date)
         {
             this.Worker = worker;
@@ -53,8 +54,36 @@ namespace Medigenda
             }
         }
 
+        public DateTime CurrentDate
+        {
+            get
+            {
+                return this.currentdate;
+            }
+            set
+            {
+                this.currentdate = value;
+                NotifyPropertyChanged();
+            }
 
+        }
+
+        public WorkerSchedule WorkedToday
+        {
+            get
+            {
+                return this.workedtoday;
+            }
+            set
+            {
+                this.workedtoday = value;
+                NotifyPropertyChanged();
+            }
+            
+        }
         #endregion
+
+        
 
         #region Relay Property-Methods
         public RelayCommand Vacation { get; set; }
@@ -67,6 +96,9 @@ namespace Medigenda
         #endregion
 
         #region GuiProperty
+       
+
+
         private string backgroundbuttoncolor;
         public string GetColor
         {
@@ -76,10 +108,15 @@ namespace Medigenda
                 {
                     return "#222266";
                 }
+                else if (this.WorkedToday != null)
+                {
+                    return this.WorkedToday.Color;
+                }
                 else if ((this.currentdate.DayOfWeek == DayOfWeek.Saturday) || (this.currentdate.DayOfWeek == DayOfWeek.Sunday))
                 {
                     return "Gray";
                 }
+               
                 else
                     return "LightGray";
             }

@@ -24,6 +24,8 @@ namespace Medigenda
 {
     public sealed partial class FillTheService : ContentDialog
     {
+
+        public Button myButton = new Button();
         public FillTheService()
         {
             this.InitializeComponent();
@@ -31,22 +33,17 @@ namespace Medigenda
             this.ListOfService = new ObservableCollection<Service>();
             AvailableWorker.ItemsSource = this.Available;
             Service.ItemsSource = this.ListOfService;
+            this.myButton = TheButton;
             
         }
+
 
        
 
         public ObservableCollection<Service> ListOfService { get; set;}
         public ObservableCollection<Worker> Available {get; set;}
+
         
-
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-        }
-
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-        }
 
         private void ListPerson_DragItemsStarting(object sender, Windows.UI.Xaml.Controls.DragItemsStartingEventArgs e)
         {

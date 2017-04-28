@@ -25,6 +25,8 @@ namespace Medigenda
          * @pre - 
          * @post -
          */ 
+
+
         public void addWorkingShift(ServiceName serv_name, double start_h, double end_h)
         {
             WorkingShift work_shift = new WorkingShift(serv_name, start_h, end_h);
