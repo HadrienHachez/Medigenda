@@ -28,7 +28,7 @@ namespace Medigenda.Converter
                 return null;
 
             DateTime dt = DateTime.Parse(value.ToString());
-            string mydt = dt.ToString("MMMM");
+            string mydt = dt.ToString("MMMM yyyy");
             char first = mydt[0];
             string final = "";
             bool firstcharchanged = false;

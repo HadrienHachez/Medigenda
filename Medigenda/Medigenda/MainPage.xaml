@@ -56,40 +56,30 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition MinWidth="180" Width="1*"/>
+            <ColumnDefinition Width="8*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Grid.Row="0" Background="White">
-            <StackPanel Orientation="Horizontal">
-                <Button FontFamily="Segoe MDL2 Assets" Content="&#xE00E;" Width="30" Height="30" Command="{Binding  PreviousButton}"></Button>
-                <TextBlock Text="{Binding CurrentDate, Mode=OneWay,Converter={StaticResource MonthDisplay}}"/>
-                <Button FontFamily="Segoe MDL2 Assets" Content="&#xE00F;" Width="30" Height="30" Command="{Binding NextButton}"></Button>
-            </StackPanel>
 
-        </Grid>
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" Height="auto">
+                <Button FontFamily="Segoe MDL2 Assets" FontSize="8" Content="&#xE00E;" Command="{Binding  PreviousButton}"></Button>
+                <Button FontFamily="Segoe MDL2 Assets" FontSize="8" Content="&#xE00F;" Command="{Binding NextButton}"></Button>
+                <TextBlock Text="{Binding CurrentDate, Mode=OneWay,Converter={StaticResource MonthDisplay}}" VerticalAlignment="Center" Height="Auto"/>
+        </StackPanel>
 
-        <ItemsControl ItemsSource="{Binding DayListing}" Grid.Column="1" Grid.Row="0">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Command="{Binding OpenContentDialogBox}"  Content="{Binding Date_time,Mode=OneWay,Converter={StaticResource NumDay}}" Width="40"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
 
         <ItemsControl ItemsSource="{Binding WorkerListing}" Grid.Column="0" Grid.Row="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical"/>
+                    <StackPanel Orientation="Vertical" Margin="10,30,0,0"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Worker.Last_name,Mode=OneWay}"  Height="40"/>
+                    <StackPanel BorderBrush="Gray" BorderThickness="1" Orientation="Horizontal" Padding="8">
+                        <TextBlock Text="{Binding Worker.Last_name,Mode=OneWay}" Margin="1"/>
+                        <TextBlock Text="{Binding Worker.First_name,Mode=OneWay}" Margin="1"/>
+                    </StackPanel>
+                    
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -102,6 +92,8 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
+                    <StackPanel>
+                    <Button  Background="DarkGray" Command="{Binding OpenContentDialogBox}"  Content="{Binding Date_time,Mode=OneWay,Converter={StaticResource NumDay}}" Width="40" Height="30"/>
                     <ItemsControl ItemsSource="{Binding InfoByDay}" Grid.Column="1" Grid.Row="1">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -114,6 +106,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
+                    </StackPanel>    
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

@@ -74,7 +74,7 @@ namespace Medigenda
             {
                 if (!this.IsPresent)
                 {
-                    return "Black";
+                    return "#222266";
                 }
                 else if ((this.currentdate.DayOfWeek == DayOfWeek.Saturday) || (this.currentdate.DayOfWeek == DayOfWeek.Sunday))
                 {

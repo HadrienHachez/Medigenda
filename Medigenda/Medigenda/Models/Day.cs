@@ -63,7 +63,6 @@ namespace Medigenda
                  new WorkerInfoByDay(new Worker("Tom", "Sellelsagh", 14161),this.Date_time),
                  new WorkerInfoByDay(new Worker("Marcin", "Krasowsky", 42),this.Date_time),
                  new WorkerInfoByDay(new Worker("Hadrien", "Hachez", 44),this.Date_time)
-
             };
 
         }
