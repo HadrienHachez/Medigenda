@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoGenerateForm.Attributes;
+﻿using AutoGenerateForm.Attributes;
 using System.Collections.ObjectModel;
-using Windows.UI.Popups;
 
 namespace Medigenda
 {

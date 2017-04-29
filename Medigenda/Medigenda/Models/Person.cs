@@ -1,14 +1,4 @@
 ﻿using AutoGenerateForm.Attributes;
-using MvvmValidation;
-using System.Collections.ObjectModel;
-using System;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using AutoGenerateForm.Helpers;
-
 
 
 namespace Medigenda
@@ -22,18 +12,11 @@ namespace Medigenda
 
         public Person(string first, string last, int id)
         {
-            this.first_name = first;
-            this.last_name = last;
-            this.id = id;
+            this.First_name = first;
+            this.Last_name = last;
+            this.Id = id;
         }
 
-        #region Methods
-
-        public string dictKey()
-        {
-            return null;
-        }
-        #endregion
 
 
         #region Property

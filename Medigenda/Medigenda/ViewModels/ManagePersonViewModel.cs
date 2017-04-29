@@ -1,13 +1,4 @@
-﻿
-using AutoGenerateForm.Attributes;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Windows.ApplicationModel.DataTransfer;
-using System;
-using System.Linq;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Popups;
-using Windows.UI.Xaml;
+﻿using System.Collections.ObjectModel;
 
 
 namespace Medigenda
@@ -34,6 +25,8 @@ namespace Medigenda
         #region Methods
         public ObservableCollection<Worker> GetWorkerListing()
         {
+
+            
             //Remove and Update when DB is available
             return new ObservableCollection<Worker>
             {

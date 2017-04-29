@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoGenerateForm.Attributes;
-
-namespace Medigenda
+﻿namespace Medigenda
 {
     public class Tima
     {
@@ -15,18 +8,20 @@ namespace Medigenda
 
         public Tima(string name, float factor)
         {
-            this.name = name;
-            this.factor = factor;
+            this.Name = name;
+            this.Factor = factor;
         }
 
         public string Name
         {
-            get { return this.name; }
+            get { return this.name;}
+            set { this.name = value; }
         }
 
         public float Factor
         {
             get { return this.factor; }
+            set { this.factor = value; }
         }
     }
 }

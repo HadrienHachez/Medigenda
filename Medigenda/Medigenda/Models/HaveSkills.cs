@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoGenerateForm.Attributes;
-using AutoGenerateForm.Uwp;
-using Windows.UI.Xaml;
-using Windows.UI.Popups;
-
-namespace Medigenda
+﻿namespace Medigenda
 { 
     public class HaveSkills : PropertyChangeBase
     {

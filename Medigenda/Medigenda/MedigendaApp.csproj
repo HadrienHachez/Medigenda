@@ -99,10 +99,8 @@
     <Compile Include="View\FillTheService.xaml.cs">
       <DependentUpon>FillTheService.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\lib\Converter.cs" />
     <Compile Include="Models\Day.cs" />
-    <Compile Include="Models\Generator.cs" />
     <Compile Include="Models\HaveSkills.cs" />
     <Compile Include="Models\OpenWeekDay.cs" />
     <Compile Include="Models\Person.cs" />
@@ -174,6 +172,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.18.0">
+      <Name>SQLite for Universal Windows Platform</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
