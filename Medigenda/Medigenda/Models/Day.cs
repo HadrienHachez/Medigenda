@@ -31,12 +31,6 @@ namespace Medigenda
         }
 
 
-        public WorkingDay getWorkingDay(Worker work)
-        {
-            return null;
-        }
-
-
         public void GotToWork(Worker worker, WorkerSchedule schedule)
         {
             foreach (WorkerInfoByDay wo in this.InfoByDay)
@@ -101,14 +95,14 @@ namespace Medigenda
         public ObservableCollection<Service> GetServiceListing()
         {
             //Remove and Update when DB is available
-            Service CT = new Service(new ServiceName("CT"));
-            CT.ShiftListing.Add(new Shift("8:00", "17:00", 2, 3,CT.Service_name));
-            CT.ShiftListing.Add(new Shift("16:00", "22:00", 2, 3, CT.Service_name));
+            Service CT = new Service("CT");
+            CT.ShiftListing.Add(new Shift(new TimeSpan(8,0,0),new TimeSpan(17,0,0), 2, 3));
+            CT.ShiftListing.Add(new Shift(new TimeSpan(16, 0, 0), new TimeSpan(22, 0, 0), 2, 3));
             
             ObservableCollection<Service> List = new ObservableCollection<Service>
             {
-                 new Service(new ServiceName("Radio")),
-                 new Service(new ServiceName("Mammo")),
+                 new Service("Radio"),
+                 new Service("Mammo")
             };
             List.Add(CT);
             return List;

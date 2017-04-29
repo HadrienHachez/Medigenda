@@ -30,7 +30,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                    <TextBlock Text="{Binding Service_name.Service_name}" > </TextBlock>
+                    <TextBlock Text="{Binding Service_name}" > </TextBlock>
                         <ItemsControl ItemsSource="{Binding ShiftListing}" Grid.Column="0">
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Horizontal"/>

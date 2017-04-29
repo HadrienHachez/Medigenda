@@ -29,24 +29,23 @@ namespace Medigenda
         public ObservableCollection<Service> GetActivitiesListing()
         {
             //Remove and Update when DB is available
+            Service CT = new Service("CT");
+            CT.ShiftListing.Add(new Shift(new TimeSpan(8, 0, 0), new TimeSpan(17, 0, 0), 2, 3));
+            CT.ShiftListing.Add(new Shift(new TimeSpan(16, 0, 0), new TimeSpan(22, 0, 0), 2, 3));
 
-            Service CT = new Service(new ServiceName("CT"));
-            CT.createShift("8:15", "23:59", 2, 3,CT.Service_name);
-            CT.createShift("13:00", "20:00", 2, 3, CT.Service_name);
-            ObservableCollection < Service > List = new ObservableCollection<Service>
+            ObservableCollection<Service> List = new ObservableCollection<Service>
             {
-                 new Service(new ServiceName("Radio")),
-                 new Service(new ServiceName("Mammo")),
+                 new Service("Radio"),
+                 new Service("Mammo")
             };
             List.Add(CT);
-            
             return List;
 
         }
 
         public void AddButtonExecute()
         {
-            this.ActivitiesListing.Add(new Service(new ServiceName("New Service")));
+            this.ActivitiesListing.Add(new Service("New Service"));
         }
 
         public void DeleteButtonExecute()

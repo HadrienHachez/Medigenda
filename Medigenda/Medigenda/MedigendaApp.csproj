@@ -109,14 +109,11 @@
     <Compile Include="Models\lib\PropertyChangeBase.cs" />
     <Compile Include="Models\lib\RelayCommand.cs" />
     <Compile Include="Models\Service.cs" />
-    <Compile Include="Models\ServiceName.cs" />
     <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\Testable.cs" />
     <Compile Include="Models\Tima.cs" />
     <Compile Include="Models\Worker.cs" />
     <Compile Include="Models\WorkerInfoByDay.cs" />
-    <Compile Include="Models\WorkingDay.cs" />
-    <Compile Include="Models\WorkingShift.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

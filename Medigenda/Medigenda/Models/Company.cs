@@ -54,7 +54,7 @@ namespace Medigenda
          * @pre - 
          * @post - the service is added to the list "services" and the database is updated. 
          */
-         public void createService(ServiceName serv_name)
+         public void createService(string serv_name)
         {
             Service new_serv = new Service(serv_name);
             this.services.Add(new_serv);

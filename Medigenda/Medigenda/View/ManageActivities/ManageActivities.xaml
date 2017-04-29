@@ -31,7 +31,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <!-- List Content-->
-                        <TextBlock Text="{Binding getName, Mode=TwoWay}" />
+                        <TextBlock Text="{Binding Service_name, Mode=TwoWay}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

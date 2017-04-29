@@ -13,7 +13,6 @@ namespace Medigenda
         private TimeSpan start_hour, end_hour;
         private ObservableCollection<Worker> workers;
         private int min_workers, opt_workers;
-        private ServiceName service_name;
         private ObservableCollection<OpenWeekDay> opening_day = new ObservableCollection<OpenWeekDay>
         {
             new OpenWeekDay(DayOfWeek.Monday),
@@ -25,21 +24,15 @@ namespace Medigenda
             new OpenWeekDay(DayOfWeek.Sunday),
         };
 
-        
 
-
-        //Format of the paramaters "start" and "end" corresponding to hours: HH:mm
-        public Shift(string start,string end, int min, int opt, ServiceName serv_name)
+        public Shift(TimeSpan start,TimeSpan end, int min, int opt)
         {
-            //Both days are set to 0000/00/00 because only the hours are important here
-            /*!!!!!Peut-être pas... travailler avec la date complète*/
-            this.start_hour = ConvertStringToTimeSpan(start);
-            this.end_hour = ConvertStringToTimeSpan(end);
+           
+            this.Start_hour = start;
+            this.End_hour = end;
             this.Workers = new ObservableCollection<Worker>();
-            //this.date = date.ToOADate();
-            this.min_workers = min;
-            this.opt_workers = opt;
-            this.service_name = serv_name;
+            this.Min_workers = min;
+            this.Opt_workers = opt;
         }
 
 
@@ -54,10 +47,12 @@ namespace Medigenda
        
         public int getSpan()
         {
-            TimeSpan shift_duration = this.end_hour - this.start_hour;
+            TimeSpan shift_duration = this.End_hour - this.Start_hour;
             return shift_duration.Minutes;
         }
         #endregion
+
+
 
         #region Property
         public ObservableCollection<Worker> Workers
@@ -110,7 +105,6 @@ namespace Medigenda
             get { return this.opt_workers; }
             set { this.opt_workers = value; }
         }
-
         #endregion
     }
 }

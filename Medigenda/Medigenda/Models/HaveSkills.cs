@@ -12,25 +12,27 @@ namespace Medigenda
 { 
     public class HaveSkills : PropertyChangeBase
     {
-        private ServiceName service;
+        private Service service;
         private bool havethisskills;
         
-        public HaveSkills(ServiceName service)
+        public HaveSkills(Service service)
         {
             CheckCommand = new RelayCommand(CheckCommandExecute);
-            this.service = service;
+            this.Service = service;
             this.havethisskills = false;
         }
 
-        public ServiceName Service
+
+
+        #region Property
+
+        public Service Service
         {
             get { return this.service; }
-        }
-
-        public RelayCommand CheckCommand { get; set; }
-        private void CheckCommandExecute()
-        {
-            this.havethisskills = this.havethisskills ? false : true;
+            set {
+                this.service = value;
+                NotifyPropertyChanged();
+                }
         }
 
 
@@ -39,12 +41,21 @@ namespace Medigenda
             get { return havethisskills; }
             set {
                 havethisskills = value;
-                NotifyPropertyChanged("HaveThisSkills");
+                NotifyPropertyChanged();
                 }
                 
 
         }
+        #endregion
 
-        
+        #region Relay Property-Method
+        public RelayCommand CheckCommand { get; set; }
+        private void CheckCommandExecute()
+        {
+            this.havethisskills = this.havethisskills ? false : true;
+        }
+        #endregion
+
+
     }
 }
