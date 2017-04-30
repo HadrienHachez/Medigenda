@@ -81,7 +81,7 @@ namespace Medigenda
         {
             this.IsPresent = this.IsPresent ? false : true;
             this.BackgroundButtonColor = GetColor;
-            
+            this.ContentButton = Content; 
         }
         #endregion
 
@@ -109,6 +109,40 @@ namespace Medigenda
                
                 else
                     return "LightGray";
+            }
+        }
+
+
+        private string content;
+        public string Content
+        {
+            get
+            {
+                if (!this.IsPresent)
+                {
+                    return "V";
+                }
+                else if (this.WorkedToday != null)
+                {
+                    return this.WorkedToday.Output;
+                }
+                else
+                    return "";
+            }
+        }
+
+
+
+        public string ContentButton
+        {
+            get
+            {
+                return this.content;
+            }
+            set
+            {
+                this.content = value;
+                NotifyPropertyChanged();
             }
         }
 
