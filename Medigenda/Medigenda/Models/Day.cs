@@ -197,7 +197,7 @@ namespace Medigenda
             ContentDialogBox = new FillTheService();
             foreach (WorkerInfoByDay Info in InfoByDay)
             {
-                if (Info.IsPresent)
+                if ((Info.IsPresent) && (Info.WorkedToday == null))
                 {
                     ContentDialogBox.Available.Add(Info.Worker);
                 }

@@ -55,12 +55,14 @@
                                                   CanDrag="True"        
                                                   AllowDrop="True"        
                                                   DragItemsStarting="ListPerson_DragItemsStarting"
-                                                  Drop="ListPerson_Copy"
+                                                  Drop="ListPerson_Dropped"
                                                   DragOver="ListPerson_DragOver">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-
-                                                    <TextBlock Text="{Binding Last_name, Mode=TwoWay}" />
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding Last_name, Mode=TwoWay}" />
+                                                        <Button Click="Remove_Click" DataContext="{Binding}" Content="X"></Button>
+                                                    </StackPanel>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
 
@@ -82,7 +84,7 @@
                       CanDrag="True"        
                       AllowDrop="True"        
                       DragItemsStarting="ListPerson_DragItemsStarting"
-                      Drop="ListPerson_Copy"
+                      Drop="ListPerson_Dropped"
                       DragOver="ListPerson_DragOver"
                       
                       >
@@ -94,6 +96,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <Button x:Name="TheButton"></Button>
+        <Button x:Name="TheButton" Content="Validate"></Button>
     </Grid>
 </ContentDialog>

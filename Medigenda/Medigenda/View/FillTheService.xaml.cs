@@ -4,7 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
 using Windows.ApplicationModel.DataTransfer;
-
+using Windows.UI.Popups;
 
 
 // Pour plus d'informations sur le modèle d'élément Boîte de dialogue de contenu, voir la page http://go.microsoft.com/fwlink/?LinkId=234238
@@ -23,7 +23,6 @@ namespace Medigenda
             AvailableWorker.ItemsSource = this.Available;
             Service.ItemsSource = this.ListOfService;
             this.myButton = TheButton;
-            
         }
 
 
@@ -95,7 +94,7 @@ namespace Medigenda
 
 
                     //Add Person into Target
-                    //target.Add(persontomove);
+                    target.Add(persontomove);
                     //Remove Person from Source
                     source.Remove(persontomove);
                 }
@@ -143,13 +142,20 @@ namespace Medigenda
                     //Add Person into Target
                     target.Add(persontomove);
                     //Remove Person from Source
-                    source.Remove(persontomove);
+                    //source.Remove(persontomove);
                 }
                 e.AcceptedOperation = DataPackageOperation.Move;
                 def.Complete();
             }
         }
 
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            var myData = sender as Button;
+            var worker = myData.DataContext as Worker;
+            //Action For the Remove
 
+            
+        }
     }
 }

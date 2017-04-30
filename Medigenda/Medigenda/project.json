@@ -2,7 +2,6 @@
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
     "MvvmValidation": "3.0.0",
-    "SQLite.UWP.Native": "3.12.3",
     "UniversalFormsToolkit": "1.0.17"
   },
   "frameworks": {
