@@ -9,9 +9,8 @@
         {
             CheckCommand = new RelayCommand(CheckCommandExecute);
             this.Service = service;
-            this.havethisskills = false;
+            this.HaveThisSkills = false;
         }
-
 
 
         #region Property

@@ -32,23 +32,13 @@ namespace Medigenda
         }
 
 
-        #region Methods
-        public TimeSpan ConvertStringToTimeSpan(string myinput)
-        {
-            string[] my_input_params = myinput.Split(':');
-            return new TimeSpan(Int16.Parse(my_input_params[0]), Int16.Parse(my_input_params[1]), 0);
-            
-        }
-
-       
+        #region Methods       
         public int getSpan()
         {
             TimeSpan shift_duration = this.End_hour - this.Start_hour;
             return shift_duration.Minutes;
         }
         #endregion
-
-
 
         #region Property
         public ObservableCollection<Worker> Workers
@@ -72,6 +62,7 @@ namespace Medigenda
                   NotifyPropertyChanged();
             }
         }
+
 
         public TimeSpan End_hour
         {

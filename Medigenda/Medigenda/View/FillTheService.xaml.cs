@@ -18,11 +18,13 @@ namespace Medigenda
         public FillTheService()
         {
             this.InitializeComponent();
+
             this.Available = new ObservableCollection<Worker>();
             this.ListOfService = new ObservableCollection<Service>();
             AvailableWorker.ItemsSource = this.Available;
             Service.ItemsSource = this.ListOfService;
             this.myButton = TheButton;
+            Lib.FixContentDialogForConstructor(this);
         }
 
 

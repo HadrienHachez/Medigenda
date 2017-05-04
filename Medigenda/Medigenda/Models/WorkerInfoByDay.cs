@@ -72,9 +72,7 @@ namespace Medigenda
             
         }
         #endregion
-
-        
-
+  
         #region Relay Property-Methods
         public RelayCommand Vacation { get; set; }
         private void VacationExecute()

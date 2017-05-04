@@ -29,9 +29,6 @@ namespace Medigenda
 
         #region Methods
 
-       
-
-
         public ObservableCollection<HaveSkills> GenAvailableSkills()
         {
 

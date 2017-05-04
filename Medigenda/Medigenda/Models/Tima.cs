@@ -12,6 +12,7 @@
             this.Factor = factor;
         }
 
+        #region Property
         public string Name
         {
             get { return this.name;}
@@ -23,5 +24,6 @@
             get { return this.factor; }
             set { this.factor = value; }
         }
+        #endregion
     }
 }

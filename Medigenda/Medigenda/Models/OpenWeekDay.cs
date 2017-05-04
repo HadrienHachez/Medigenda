@@ -30,21 +30,16 @@ namespace Medigenda
 
         }
 
+
+        #region Property
         public DayOfWeek Day
         {
-            get { return this.Day; }
+            get { return this.day; }
         }
 
         public string DisplayDay
         {
             get { return this.day.ToString(); }
-        }
-
-
-        public RelayCommand CheckCommand { get; set; }
-        private void CheckCommandExecute()
-        {
-            this.isopen = this.isopen ? false : true;
         }
 
 
@@ -60,5 +55,15 @@ namespace Medigenda
 
         }
 
+        #endregion
+
+        #region Relay Property-Method
+        public RelayCommand CheckCommand { get; set; }
+        private void CheckCommandExecute()
+        {
+            this.isopen = this.isopen ? false : true;
+        }
+        #endregion
     }
+
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
+using Windows.UI.Popups;
 
 namespace Medigenda
 {
@@ -22,6 +23,7 @@ namespace Medigenda
         }
 
 
+        #region Methods
         public void GotToWork(Worker worker, WorkerSchedule schedule)
         {
             foreach (WorkerInfoByDay wo in this.InfoByDay)
@@ -41,8 +43,8 @@ namespace Medigenda
            
            foreach(WorkerInfoByDay woex in InfoByDay)
             {
-            TimeSpan first = new TimeSpan (0,0,0);
-            TimeSpan end = new TimeSpan(23,59,00);
+            TimeSpan first = new TimeSpan (23,59,0);
+            TimeSpan end = new TimeSpan(0,0,0);
             foreach (Service service in ContentDialogBox.ListOfService)
             {
                 foreach (Shift shift in service.ShiftListing)
@@ -52,11 +54,11 @@ namespace Medigenda
                     
                             if (wo == woex.Worker)
                             {
-                                if (shift.Start_hour > first)
+                                if (shift.Start_hour < first)
                                 {
                                     first = shift.Start_hour;
                                 }
-                                if (shift.End_hour < end)
+                                if (shift.End_hour > end)
                                 {
                                    end = shift.End_hour;
                                 }
@@ -82,21 +84,79 @@ namespace Medigenda
             ContentDialogBox.Hide();
         }
 
+        #endregion
+
         #region GetDataMethod
         public ObservableCollection<Service> GetServiceListing()
         {
             //Remove and Update when DB is available
-            Service CT = new Service("CT");
-            CT.ShiftListing.Add(new Shift(new TimeSpan(8,0,0),new TimeSpan(17,0,0), 2, 3));
-            CT.ShiftListing.Add(new Shift(new TimeSpan(16, 0, 0), new TimeSpan(22, 0, 0), 2, 3));
-            
-            ObservableCollection<Service> List = new ObservableCollection<Service>
+            Shift MT1 = new Shift(new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0), 2, 3);
+            Shift SA1 = new Shift(new TimeSpan(13, 0, 0), new TimeSpan(17, 0, 0), 2, 3);
+            Shift TT = new Shift(new TimeSpan(7, 30, 0), new TimeSpan(12, 0, 0), 1, 1);
+            Shift MT2 = new Shift(new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0), 3, 4);
+            Shift SA2 = new Shift(new TimeSpan(13, 0, 0), new TimeSpan(17, 0, 0), 3, 4);
+            Shift MT3 = new Shift(new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0), 2, 2);
+            Shift SA3 = new Shift(new TimeSpan(13, 0, 0), new TimeSpan(17, 0, 0), 2, 2);
+            Shift SS = new Shift(new TimeSpan(17, 0, 0), new TimeSpan(20, 0, 0), 2, 2);
+            Shift MTW = new Shift(new TimeSpan(7, 30, 0), new TimeSpan(19, 0, 0), 1, 1);
+            Shift SAW = new Shift(new TimeSpan(9, 0, 0), new TimeSpan(20, 30, 0), 1, 1);
+            foreach (OpenWeekDay openday in MTW.Opening_Day)
             {
-                 new Service("Radio"),
-                 new Service("Mammo")
-            };
-            List.Add(CT);
-            return List;
+                openday.IsOpen = false;
+                if((openday.Day == DayOfWeek.Saturday ) || (openday.Day == DayOfWeek.Sunday))
+                        {
+                    openday.IsOpen = true;
+                        }
+            }
+            foreach (OpenWeekDay openday in SAW.Opening_Day)
+            {
+                openday.IsOpen = false;
+                if ((openday.Day == DayOfWeek.Saturday) || (openday.Day == DayOfWeek.Sunday))
+                {
+                    openday.IsOpen = true;
+                }
+            }
+
+            Service CT = new Service("Scanner");
+            Service Radio = new Service("Radio");
+            Service URG = new Service("Urgence");
+            Radio.ShiftListing.Add(TT);
+            Radio.ShiftListing.Add(MT1);
+            Radio.ShiftListing.Add(SA1);  
+            CT.ShiftListing.Add(MT2);
+            CT.ShiftListing.Add(SA2);
+            URG.ShiftListing.Add(MT3);
+            URG.ShiftListing.Add(SA3);
+            URG.ShiftListing.Add(SS);
+            URG.ShiftListing.Add(MTW);
+            URG.ShiftListing.Add(SAW);
+
+            ObservableCollection<Service> List = new ObservableCollection<Service>{CT,URG,Radio};
+
+
+
+            //Check if shift isOpen
+            ObservableCollection<Service> MyList = new ObservableCollection<Service> ();
+            foreach (Service service in List)
+            {
+                Service servicetoadd = new Service(service.Service_name);
+                MyList.Add(servicetoadd);
+                foreach (Shift shift in service.ShiftListing)
+                {
+                    foreach(OpenWeekDay open in shift.Opening_Day)
+                    {
+                        if((open.IsOpen == true) && (open.Day == this.Date_time.DayOfWeek)) 
+                        {
+                            MyList[MyList.IndexOf(servicetoadd)].ShiftListing.Add(shift);
+                        }
+                    }
+                }
+                if (servicetoadd.ShiftListing.Count == 0)
+                {
+                    MyList.Remove(servicetoadd);
+                }
+            }
+            return MyList;
         }
 
 
@@ -120,13 +180,14 @@ namespace Medigenda
             return new ObservableCollection<WorkerSchedule>
         {
             new WorkerSchedule(new TimeSpan(8,0,0),new TimeSpan(17,0,0),"M","#99ff99"),
-            new WorkerSchedule(new TimeSpan(16,0,0),new TimeSpan(22,0,0),"Sa","#ffff99")
+            new WorkerSchedule(new TimeSpan(13,0,0),new TimeSpan(20,0,0),"Sa","#ffff99"),
+            new WorkerSchedule(new TimeSpan(7,30,0),new TimeSpan(19,0,0),"SaW","#ff9999"),
+            new WorkerSchedule(new TimeSpan(9,0,0),new TimeSpan(20,30,0),"Sa","#ff7777"),
+            new WorkerSchedule(new TimeSpan(7,30,0),new TimeSpan(17,0,0),"Sa","#77ff77")
         };
 
         }
         #endregion
-
-
 
         #region Property
         public ObservableCollection<WorkerSchedule> ListOfAvailableSchedule
@@ -174,13 +235,6 @@ namespace Medigenda
         }
 
         #endregion
-
-
-
-
-
-
-
 
         #region GuiProperty
         private FillTheService contentdialogbox = new FillTheService();

@@ -12,13 +12,14 @@ namespace Medigenda
             this.Service_name = service_name;
         }
 
-
+        #region Property
         public ObservableCollection<Shift> ShiftListing
         {
             get {
                 return this.shifts;
                 }
         }
+        
 
         public string Service_name
         {
@@ -29,5 +30,6 @@ namespace Medigenda
                 NotifyPropertyChanged();
             }
         }
+        #endregion
     }
 }

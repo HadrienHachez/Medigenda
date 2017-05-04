@@ -21,7 +21,6 @@ namespace Medigenda
             this.WorkerListing = GetWorkerListing();
         }
 
-
         #region Methods
         public ObservableCollection<Worker> GetWorkerListing()
         {
@@ -72,7 +71,5 @@ namespace Medigenda
             }
         }
         #endregion
-
-
     }
 }

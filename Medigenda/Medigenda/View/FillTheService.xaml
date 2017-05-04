@@ -14,48 +14,57 @@
     <ContentDialog.Resources>
         <conv:TimeSpanHourAndMinuteDisplay x:Key="TimeConverter"/>
     </ContentDialog.Resources>
-    <Grid >
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"/>
-            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        
-        <ItemsControl x:Name="Service">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            
+           
+    <ItemsControl x:Name="Service" HorizontalAlignment="Center">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Stretch"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
     
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                    <TextBlock Text="{Binding Service_name}" > </TextBlock>
-                        <ItemsControl ItemsSource="{Binding ShiftListing}" Grid.Column="0">
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
+                        <StackPanel BorderBrush="#44AAFF" BorderThickness="1" Background="#DDEEFF" Margin="10" Padding="0,0,0,15">
+                            <Grid Background="#44AAFF" HorizontalAlignment="Stretch">
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Service_name}" Margin="10"></TextBlock>
+                            </Grid>
+                    
+                        <ItemsControl ItemsSource="{Binding ShiftListing}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
+                                        <Grid  BorderBrush="#88CCFF" BorderThickness="1" Margin="10,15,10,0">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="20"/>
+                                            <RowDefinition/>
                                             <RowDefinition MinHeight="60"/>
                                         </Grid.RowDefinitions>
-                                        <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                            <StackPanel Background="#88CCFF" Orientation="Horizontal" MinWidth="150" Padding="0,5,0,5" Grid.Row="0">
                                             <TextBlock Text="{Binding Start_hour, Mode=TwoWay,Converter={StaticResource TimeConverter}}"/>
                                             <TextBlock Text=" - "/>
                                             <TextBlock Text="{Binding End_hour, Mode=TwoWay,Converter={StaticResource TimeConverter}}" />
                                         </StackPanel>
                                         <ListView ItemsSource="{Binding Workers}"
-                                                  
+                        
+                                                  Background="White"
                                                   Grid.Row="1"
-                                                  Background="AliceBlue"
                                                   CanDragItems="True"
                                                   CanDrag="True"        
                                                   AllowDrop="True"        
                                                   DragItemsStarting="ListPerson_DragItemsStarting"
-                                                  Drop="ListPerson_Dropped"
+                                                  Drop="ListPerson_Copy"
                                                   DragOver="ListPerson_DragOver">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
@@ -77,9 +86,13 @@
         </ItemsControl>
 
 
-        <StackPanel Grid.Column="1">
-            <TextBlock Text="Available Worker"></TextBlock>
+            <StackPanel  BorderBrush="#44FFAA" BorderThickness="1" Grid.Column="1" MinWidth="250" Margin="50,10,10,10" Background="White">
+                <Grid Background="#44FFAA" HorizontalAlignment="Stretch" >
+                    <TextBlock HorizontalAlignment="Center" Text="Available Worker" Margin="10"></TextBlock>
+                </Grid>
+            
             <ListView x:Name="AvailableWorker"
+                      
                       CanDragItems="True"
                       CanDrag="True"        
                       AllowDrop="True"        
@@ -96,6 +109,11 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <Button x:Name="TheButton" Content="Validate"></Button>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <Button x:Name="TheButton" Content="Validate" ></Button>
+            <Button x:Name="Cancel" Content="Cancel"></Button>
+        </StackPanel>
+
     </Grid>
 </ContentDialog>
