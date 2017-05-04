@@ -20,6 +20,7 @@
         </Style>
         <conv:DateTimeMonthDisplay x:Key="MonthDisplay"/>
         <conv:DateTimeNumericDay x:Key="NumDay"/>
+        <conv:WorkerDisplay x:Key="Display"/>
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar>
@@ -76,10 +77,9 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel BorderBrush="Gray" BorderThickness="1" Orientation="Horizontal" Padding="8">
-                        <TextBlock Text="{Binding Worker.Last_name,Mode=OneWay}" Margin="1"/>
-                        <TextBlock Text="{Binding Worker.First_name,Mode=OneWay}" Margin="1"/>
+                        <TextBlock Text="{Binding Worker,Mode=OneWay,Converter={StaticResource Display}}" Margin="1"/>
                     </StackPanel>
-                    
+            
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -93,7 +93,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                    <Button  Background="DarkGray" Command="{Binding OpenContentDialogBox}"  Content="{Binding Date_time,Mode=OneWay,Converter={StaticResource NumDay}}" Width="40" Height="30"/>
+                    <Button  Background="#44AAFF" Command="{Binding OpenContentDialogBox}"  Content="{Binding Date_time,Mode=OneWay,Converter={StaticResource NumDay}}" Width="40" Height="30"/>
                     <ItemsControl ItemsSource="{Binding InfoByDay}" Grid.Column="1" Grid.Row="1">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>

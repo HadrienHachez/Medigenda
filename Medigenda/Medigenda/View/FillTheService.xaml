@@ -13,6 +13,8 @@
                     >
     <ContentDialog.Resources>
         <conv:TimeSpanHourAndMinuteDisplay x:Key="TimeConverter"/>
+        <conv:WorkerDisplay x:Key="DisplayWorker"/>
+        <conv:WorkerInitial x:Key="Initial"/>
     </ContentDialog.Resources>
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
@@ -49,7 +51,7 @@
                                         <Grid  BorderBrush="#88CCFF" BorderThickness="1" Margin="10,15,10,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition/>
-                                            <RowDefinition MinHeight="60"/>
+                                            <RowDefinition MinHeight="80"/>
                                         </Grid.RowDefinitions>
                                             <StackPanel Background="#88CCFF" Orientation="Horizontal" MinWidth="150" Padding="0,5,0,5" Grid.Row="0">
                                             <TextBlock Text="{Binding Start_hour, Mode=TwoWay,Converter={StaticResource TimeConverter}}"/>
@@ -64,15 +66,21 @@
                                                   CanDrag="True"        
                                                   AllowDrop="True"        
                                                   DragItemsStarting="ListPerson_DragItemsStarting"
-                                                  Drop="ListPerson_Copy"
+                                                  Drop="ListPerson_Dropped"
                                                   DragOver="ListPerson_DragOver">
+                                                <ListView.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="center"/>
+                                                    </ItemsPanelTemplate>
+                                                </ListView.ItemsPanel>
                                             <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding Last_name, Mode=TwoWay}" />
-                                                        <Button Click="Remove_Click" DataContext="{Binding}" Content="X"></Button>
-                                                    </StackPanel>
-                                                </DataTemplate>
+                                                    <DataTemplate>
+                                                        <Grid HorizontalAlignment="center" Width="auto">
+                                                            <Ellipse Width="40" Height="40" Fill="#0033CC"></Ellipse>
+                                                            <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="center" Text="{Binding Converter={StaticResource Initial},Mode=TwoWay}" />
+                                                        </Grid>
+                                                        
+                                                    </DataTemplate>
                                             </ListView.ItemTemplate>
 
                                         </ListView>
@@ -86,9 +94,9 @@
         </ItemsControl>
 
 
-            <StackPanel  BorderBrush="#44FFAA" BorderThickness="1" Grid.Column="1" MinWidth="250" Margin="50,10,10,10" Background="White">
-                <Grid Background="#44FFAA" HorizontalAlignment="Stretch" >
-                    <TextBlock HorizontalAlignment="Center" Text="Available Worker" Margin="10"></TextBlock>
+            <StackPanel  BorderBrush="#0033CC" BorderThickness="1" Grid.Column="1" MinWidth="250" Margin="50,10,10,10" Background="White">
+                <Grid Background="#0033CC" HorizontalAlignment="Stretch" Margin="0,0,0,10">
+                    <TextBlock Foreground="White" HorizontalAlignment="Center" Text="Available Worker" Margin="10"></TextBlock>
                 </Grid>
             
             <ListView x:Name="AvailableWorker"
@@ -103,9 +111,17 @@
                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="4">
+                                <Grid HorizontalAlignment="center" Width="auto" >
+                                    <Ellipse Width="40" Height="40" Fill="#0033CC"></Ellipse>
+                                    <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="center" Text="{Binding Converter={StaticResource Initial},Mode=TwoWay}" />
 
-                        <TextBlock Text="{Binding Last_name, Mode=TwoWay}" />
-                    </DataTemplate>
+                                </Grid>
+                                <TextBlock Margin="5,0,0,0"  VerticalAlignment="Center" HorizontalAlignment="center" Text="{Binding Converter={StaticResource DisplayWorker},Mode=TwoWay}" />
+                            </StackPanel>
+                            
+                            
+                        </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>

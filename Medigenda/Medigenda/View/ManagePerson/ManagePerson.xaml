@@ -43,15 +43,28 @@
             </ListView>
         </Grid>
         <!-- Form Content -->
-        <StackPanel Grid.Column="1">
-            <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedWorker, Mode=TwoWay}"/>
-             <ItemsControl ItemsSource="{Binding SelectedWorker.Skills}">
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel  Grid.Column="0">
+                <TextBlock Text="General Informations"/>
+                <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedWorker, Mode=TwoWay}"/>
+            </StackPanel>
+         
+            
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Skills"/>
+                <ItemsControl ItemsSource="{Binding SelectedWorker.Skills}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <CheckBox Content="{Binding Service.Service_name, Mode=TwoWay}" IsChecked="{Binding HaveThisSkills }" Command="{Binding CheckCommand}"></CheckBox>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
+            
             </ItemsControl>
-        </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

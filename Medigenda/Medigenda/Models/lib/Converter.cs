@@ -69,4 +69,39 @@ namespace Medigenda.Converter
             throw new NotSupportedException();
         }
     }
+
+    public class WorkerDisplay : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value == null)
+            {
+                return null;
+            }
+            Worker worker = value as Worker;
+            return worker.Last_name + " " + worker.First_name;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+
+    public class WorkerInitial : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value == null)
+                return null;
+
+            Worker worker = value as Worker;
+            return worker.Last_name[0]+""+ worker.First_name[0];
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
 }
