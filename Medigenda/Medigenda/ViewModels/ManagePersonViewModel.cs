@@ -72,8 +72,7 @@ namespace Medigenda
 
         public void DeleteButtonExecute()
         {
-            //need a Validation
-            
+            Database.Execute(string.Format("DELETE FROM WorkerTable Where Id = {0}", SelectedWorker.Id));
             this.WorkerListing.Remove(SelectedWorker);
         }
 
@@ -92,8 +91,8 @@ namespace Medigenda
             get {   return selectedWorker;}
             set {
                 selectedWorker = value;
-                Database.Execute(string.Format("UPDATE WorkerTable SET Firstname='{0}' WHERE ID = {1};", SelectedWorker.First_name, SelectedWorker.Id));
-                Database.Execute(string.Format("UPDATE WorkerTable SET Lastname='{0}' WHERE ID = {1};", SelectedWorker.Last_name, SelectedWorker.Id));
+                //Database.Execute(string.Format("UPDATE WorkerTable SET Firstname='{0}' WHERE ID = {1};", SelectedWorker.First_name, SelectedWorker.Id));
+                //Database.Execute(string.Format("UPDATE WorkerTable SET Lastname='{0}' WHERE ID = {1};", SelectedWorker.Last_name, SelectedWorker.Id));
                 NotifyPropertyChanged();}
         }
 
