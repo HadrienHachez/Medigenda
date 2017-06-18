@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Popups;
-
+using System.IO;
 namespace Medigenda
 {
     public class Day : PropertyChangeBase
@@ -11,15 +11,18 @@ namespace Medigenda
         private ObservableCollection<WorkerInfoByDay> infobyday;
         private ObservableCollection<Service> listofavailableservices = new ObservableCollection<Service>();
         private ObservableCollection<WorkerSchedule> listofavailableschedule = new ObservableCollection<WorkerSchedule>();
-       
+        public SQLite.Net.SQLiteConnection Database;
+        public string path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "medigendaLocalDB.sqlite");
 
         public Day(DateTime date)
         {
+            Database = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
             this.date_time = date;
             this.InfoByDay = GetWorkerListing();
             this.ListOfAvailableService = GetServiceListing();
             this.ListOfAvailableSchedule = GetScheduleListing();
             OpenContentDialogBox = new RelayCommand(OpenContentDialogBoxExecute);
+           
         }
 
 
@@ -162,14 +165,19 @@ namespace Medigenda
 
         public ObservableCollection<WorkerInfoByDay> GetWorkerListing()
         {
-            //Remove and Update when DB is available
-            return new ObservableCollection<WorkerInfoByDay>
+
+            ObservableCollection<WorkerInfoByDay> FromDB = new ObservableCollection<WorkerInfoByDay>();
+            var WorkerDB = Database.Table<WorkerTable>();
+            foreach (WorkerTable WorkerFromDB in WorkerDB)
             {
-                 new WorkerInfoByDay(new Worker("Benoit", "Wéry", 14256),this.Date_time),
-                 new WorkerInfoByDay(new Worker("Tom", "Selleslagh", 14161),this.Date_time),
-                 new WorkerInfoByDay(new Worker("Marcin", "Krasowsky", 42),this.Date_time),
-                 new WorkerInfoByDay(new Worker("Hadrien", "Hachez", 44),this.Date_time)
-            };
+                Worker currentworker = new Worker(WorkerFromDB.Firstname, WorkerFromDB.Lastname);
+                //currentworker.AddTima(WorkerFromDB.Tima);
+                //currentworker.AddSkills(WorkerFromDB.Skills);
+                currentworker.Id = WorkerFromDB.Id;
+                FromDB.Add(new WorkerInfoByDay(currentworker,this.Date_time));
+            }
+            return FromDB;
+            
 
         }
 

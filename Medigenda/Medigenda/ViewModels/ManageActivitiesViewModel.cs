@@ -26,7 +26,7 @@ namespace Medigenda
         {
             //Remove and Update when DB is available
             Service CT = new Service("CT");
-            CT.ShiftListing.Add(new Shift(new TimeSpan(8, 0, 0), new TimeSpan(17, 0, 0), 2, 3));
+            CT.ShiftListing.Add(new Shift(new TimeSpan(8, 0, 0), new TimeSpan(17, 0, 0), 2, 4));
             CT.ShiftListing.Add(new Shift(new TimeSpan(16, 0, 0), new TimeSpan(22, 0, 0), 2, 3));
 
             ObservableCollection<Service> List = new ObservableCollection<Service>
@@ -35,6 +35,8 @@ namespace Medigenda
                  new Service("Mammo")
             };
             List.Add(CT);
+            SelectedActivity = List[2];
+            SelectedShift = SelectedActivity.ShiftListing[1];
             return List;
 
         }
@@ -55,7 +57,8 @@ namespace Medigenda
         #region Property
         public ObservableCollection<Service> ActivitiesListing
         {
-            get { return this.activitieslisting; }
+            get {
+                return this.activitieslisting; }
             set
             {
                 this.activitieslisting = value;
@@ -64,12 +67,34 @@ namespace Medigenda
         }
 
 
+
         public Service SelectedActivity
         {
-            get { return selectedactivity;}
+            get {
+                return selectedactivity;}
             set
             {
                 selectedactivity = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public Shift SelectedShiftauto
+        {
+            get
+            {      
+                foreach (Shift test in SelectedActivity.ShiftListing)
+                {
+                    if (test.End_hour == SelectedShift.End_hour)
+                    {
+                        return test;
+                    }
+                }
+                return null;
+            }    
+            set
+            {
+                SelectedShiftauto = value;
                 NotifyPropertyChanged();
             }
         }

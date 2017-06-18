@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using AutoGenerateForm.Attributes;
 
 namespace Medigenda
 { 
@@ -16,8 +17,13 @@ namespace Medigenda
         public ObservableCollection<Shift> ShiftListing
         {
             get {
-                return this.shifts;
+                return shifts;
                 }
+            set
+            {
+                shifts = value;
+                NotifyPropertyChanged();
+            }
         }
         
 

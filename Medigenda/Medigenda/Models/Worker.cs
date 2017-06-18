@@ -21,7 +21,7 @@ namespace Medigenda
         };
 
 
-        public Worker(string first, string last, int id) : base(first, last, id)
+        public Worker(string first, string last) : base(first, last)
         {
             this.tima = this.availableTima[0];
             this.skills = GenAvailableSkills();
@@ -57,14 +57,14 @@ namespace Medigenda
         public ObservableCollection<Tima> AvailableTima
         {
             get { return this.availableTima; }
-            set { this.availableTima = value; NotifyPropertyChanged(); }
+            set { this.availableTima = value;}
         }
 
 
         public Tima Tima
         {
             get { return this.tima; }
-            set { this.tima = value; NotifyPropertyChanged(); }
+            set { this.tima = value;}
         }
         
 

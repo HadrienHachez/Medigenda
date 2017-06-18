@@ -18,6 +18,7 @@ namespace Medigenda
             NextButton = new RelayCommand(NextButtonExecute);
             
             this.CurrentDate = DateTime.Now;
+            LocalDB db = new LocalDB();
             
                       
      }

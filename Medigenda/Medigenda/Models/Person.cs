@@ -1,5 +1,5 @@
 ﻿using AutoGenerateForm.Attributes;
-
+using System.IO;
 
 namespace Medigenda
 
@@ -9,12 +9,10 @@ namespace Medigenda
         private string first_name, last_name;
         private int id;
 
-
-        public Person(string first, string last, int id)
+        public Person(string first, string last)
         {
             this.First_name = first;
             this.Last_name = last;
-            this.Id = id;
         }
 
 
@@ -27,7 +25,8 @@ namespace Medigenda
         {
             get { return this.first_name; }
             set { this.first_name = value;
-                   NotifyPropertyChanged(); }
+                
+                NotifyPropertyChanged(); }
         }
 
         [AutoGenerateProperty]
@@ -37,6 +36,7 @@ namespace Medigenda
         {
             get { return this.last_name; }
             set { this.last_name = value;
+               
                 NotifyPropertyChanged();
             }
         }

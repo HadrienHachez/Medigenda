@@ -53,7 +53,8 @@ namespace Medigenda
             set { this.opening_day = value; }
         }
 
-
+        [AutoGenerateProperty]
+        [Display("Begin hour")]
         public TimeSpan Start_hour
         {
             get { return this.start_hour; }
@@ -63,7 +64,8 @@ namespace Medigenda
             }
         }
 
-
+        [AutoGenerateProperty]
+        [Display("End Hour")]
         public TimeSpan End_hour
         {
             get { return this.end_hour; }
@@ -80,7 +82,7 @@ namespace Medigenda
         public int Min_workers
         {
             get { return this.min_workers; }
-            set { this.min_workers = value; }
+            set { this.min_workers = value; NotifyPropertyChanged(); }
         }
 
        
@@ -90,7 +92,7 @@ namespace Medigenda
         public int Opt_workers
         {
             get { return this.opt_workers; }
-            set { this.opt_workers = value; }
+            set { this.opt_workers = value; NotifyPropertyChanged(); }
         }
         #endregion
     }

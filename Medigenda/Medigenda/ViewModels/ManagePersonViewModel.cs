@@ -1,49 +1,74 @@
 ﻿using System.Collections.ObjectModel;
-
+using System.IO;
+using System.Diagnostics;
+using System.Collections.Generic;
+using Windows.UI.Popups;
 
 namespace Medigenda
 {
     public class ManagePersonViewModel : PropertyChangeBase
     {
         private ObservableCollection<Worker> workerlisting;
-       
-
+        public SQLite.Net.SQLiteConnection Database;
+        public string path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "medigendaLocalDB.sqlite");
         public RelayCommand AddButton { get; set; }
         public RelayCommand DeleteButton { get; set; }
-
+        public RelayCommand SaveButton { get; set; }
         private Worker selectedWorker;
+        
+        
 
-       
         public ManagePersonViewModel()
-        {
+        { 
+            Database = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+            Debug.WriteLine(path);
+            Database.CreateTable<WorkerTable>();
             AddButton = new RelayCommand(AddButtonExecute);
             DeleteButton = new RelayCommand(DeleteButtonExecute);
+            SaveButton = new RelayCommand(SaveButtonExecute);
             this.WorkerListing = GetWorkerListing();
+    
+
         }
 
         #region Methods
         public ObservableCollection<Worker> GetWorkerListing()
         {
 
-            
-            //Remove and Update when DB is available
-            return new ObservableCollection<Worker>
+            ObservableCollection<Worker> FromDB = new ObservableCollection<Worker>();
+            var WorkerDB = Database.Table<WorkerTable>();
+            foreach (WorkerTable WorkerFromDB in WorkerDB)
             {
-                 new Worker("Benoit", "Wéry", 14256),
-                 new Worker("Tom", "Sellelsagh", 14161)
-            };
-
+                Worker currentworker = new Worker(WorkerFromDB.Firstname, WorkerFromDB.Lastname);
+                //currentworker.AddTima(WorkerFromDB.Tima);
+                //currentworker.AddSkills(WorkerFromDB.Skills);
+                currentworker.Id = WorkerFromDB.Id;
+                FromDB.Add(currentworker);
+            }
+            return FromDB; 
         }
 
         public void AddButtonExecute()
         {
-            
-            this.WorkerListing.Add(new Worker("Firstname", "Lastname", 0));
+            WorkerTable currentWorker = new WorkerTable();
+            currentWorker.Lastname = "Worker";
+            currentWorker.Firstname = "New";
+            Database.InsertOrIgnore(currentWorker);
+            WorkerListing.Add(new Worker("Worker", "New"));
+        }
+
+        private void SaveButtonExecute()
+        {
+
+            Database.Execute(string.Format("UPDATE WorkerTable SET Firstname='{0}' WHERE ID = {1};", SelectedWorker.First_name, SelectedWorker.Id));
+            Database.Execute(string.Format("UPDATE WorkerTable SET Lastname='{0}' WHERE ID = {1};", SelectedWorker.Last_name, SelectedWorker.Id));
+
         }
 
         public void DeleteButtonExecute()
         {
             //need a Validation
+            
             this.WorkerListing.Remove(SelectedWorker);
         }
 
@@ -54,8 +79,10 @@ namespace Medigenda
         {
             get {   return selectedWorker;}
             set {
-                    selectedWorker = value;
-                    NotifyPropertyChanged();}
+                selectedWorker = value;
+                Database.Execute(string.Format("UPDATE WorkerTable SET Firstname='{0}' WHERE ID = {1};", SelectedWorker.First_name, SelectedWorker.Id));
+                Database.Execute(string.Format("UPDATE WorkerTable SET Lastname='{0}' WHERE ID = {1};", SelectedWorker.Last_name, SelectedWorker.Id));
+                NotifyPropertyChanged();}
         }
 
         public ObservableCollection<Worker> WorkerListing
