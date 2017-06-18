@@ -9,10 +9,11 @@ namespace Medigenda
         private string first_name, last_name;
         private int id;
 
-        public Person(string first, string last)
+        public Person(string first, string last, int id)
         {
             this.First_name = first;
             this.Last_name = last;
+            this.id = id;
         }
 
 

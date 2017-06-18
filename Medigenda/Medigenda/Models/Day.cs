@@ -170,10 +170,9 @@ namespace Medigenda
             var WorkerDB = Database.Table<WorkerTable>();
             foreach (WorkerTable WorkerFromDB in WorkerDB)
             {
-                Worker currentworker = new Worker(WorkerFromDB.Firstname, WorkerFromDB.Lastname);
+                Worker currentworker = new Worker(WorkerFromDB.Firstname, WorkerFromDB.Lastname,WorkerFromDB.Id);
                 //currentworker.AddTima(WorkerFromDB.Tima);
                 //currentworker.AddSkills(WorkerFromDB.Skills);
-                currentworker.Id = WorkerFromDB.Id;
                 FromDB.Add(new WorkerInfoByDay(currentworker,this.Date_time));
             }
             return FromDB;

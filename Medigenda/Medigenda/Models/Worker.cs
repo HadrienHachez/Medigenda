@@ -21,7 +21,7 @@ namespace Medigenda
         };
 
 
-        public Worker(string first, string last) : base(first, last)
+        public Worker(string first, string last,int id) : base(first, last,id)
         {
             this.tima = this.availableTima[0];
             this.skills = GenAvailableSkills();

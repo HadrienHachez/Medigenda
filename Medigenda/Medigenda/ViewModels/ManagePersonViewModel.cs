@@ -39,10 +39,9 @@ namespace Medigenda
             var WorkerDB = Database.Table<WorkerTable>();
             foreach (WorkerTable WorkerFromDB in WorkerDB)
             {
-                Worker currentworker = new Worker(WorkerFromDB.Firstname, WorkerFromDB.Lastname);
+                Worker currentworker = new Worker(WorkerFromDB.Firstname, WorkerFromDB.Lastname,WorkerFromDB.Id);
                 //currentworker.AddTima(WorkerFromDB.Tima);
                 //currentworker.AddSkills(WorkerFromDB.Skills);
-                currentworker.Id = WorkerFromDB.Id;
                 FromDB.Add(currentworker);
             }
             return FromDB; 
@@ -53,13 +52,19 @@ namespace Medigenda
             WorkerTable currentWorker = new WorkerTable();
             currentWorker.Lastname = "Worker";
             currentWorker.Firstname = "New";
-            Database.InsertOrIgnore(currentWorker);
-            WorkerListing.Add(new Worker("Worker", "New"));
+            Database.Insert(currentWorker);
+            
+            var current = Database.Query<WorkerTable>("SELECT * FROM WorkerTable Where id = (SELECT MAX(Id) FROM WorkerTable);");
+                
+               
+           
+               
+            WorkerListing.Add(new Worker(currentWorker.Firstname,currentWorker.Lastname,current[0].Id));
         }
 
         private void SaveButtonExecute()
         {
-
+            update();
             Database.Execute(string.Format("UPDATE WorkerTable SET Firstname='{0}' WHERE ID = {1};", SelectedWorker.First_name, SelectedWorker.Id));
             Database.Execute(string.Format("UPDATE WorkerTable SET Lastname='{0}' WHERE ID = {1};", SelectedWorker.Last_name, SelectedWorker.Id));
 
@@ -72,6 +77,13 @@ namespace Medigenda
             this.WorkerListing.Remove(SelectedWorker);
         }
 
+
+        private void update()
+        {
+            MessageDialog Ok = new MessageDialog("DB mise à jour");
+            Ok.Commands.Add(new Windows.UI.Popups.UICommand("OK") { Id = 0 });
+            Ok.ShowAsync();
+        }
         #endregion
 
         #region Property
