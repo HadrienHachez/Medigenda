@@ -22,15 +22,17 @@
         2.Add this.Datacontext = the ViewModelPage into the xaml.cs files
     -->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
+            <TextBlock FontSize="20" Visibility="Visible" Margin="10" Text="Workers"/>
             <ListView
                 Grid.Row="1"
                 ItemsSource="{Binding WorkerListing, Mode=TwoWay}" 
@@ -44,18 +46,18 @@
             </ListView>
         </Grid>
         <!-- Form Content -->
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1"  Margin="30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel  Grid.Column="0">
-                <TextBlock Text="Worker Schedule Management Page"/>
+                
                 <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedWorker, Mode=TwoWay}"/>
             </StackPanel>
-         
-            
-            <StackPanel Grid.Column="1">
+
+
+            <StackPanel Grid.Column="1" Margin="30">
                 <TextBlock Text="Skills"/>
                 <ItemsControl ItemsSource="{Binding SelectedWorker.Skills}">
                 <ItemsControl.ItemTemplate>

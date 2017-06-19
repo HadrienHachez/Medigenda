@@ -15,6 +15,7 @@ namespace Medigenda
             this.currentdate = date;
             Vacation = new RelayCommand(VacationExecute);
             this.BackgroundButtonColor = GetColor;
+            //this.ContentButton = Content;
         }
 
         #region Property
@@ -79,7 +80,8 @@ namespace Medigenda
         {
             this.IsPresent = this.IsPresent ? false : true;
             this.BackgroundButtonColor = GetColor;
-            this.ContentButton = Content; 
+            //this.ContentButton = Content; 
+           
         }
         #endregion
 

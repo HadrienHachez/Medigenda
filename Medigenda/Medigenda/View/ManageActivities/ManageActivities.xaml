@@ -23,7 +23,13 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
-        <Grid  Grid.Column="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="20" Visibility="Visible" Margin="10" Text="Activities"/>
+        <Grid  Grid.Column="0" Grid.Row="1">
 
             <ListView
                
@@ -37,7 +43,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Grid.Row="1">
             <ListView
                 
                 ItemsSource="{Binding SelectedActivity.ShiftListing, Mode=TwoWay}"
@@ -54,9 +60,10 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-        
-        
-        <StackPanel Grid.Column="2">
+
+
+        <StackPanel Grid.Column="2" Margin="30" Grid.Row="1">
+            
             <autogenerator:AutoGenerator x:Name="theform" CurrentDataContext="{Binding SelectedShift, Mode=TwoWay}"/>
             <TimePicker  Header="Beginning of The Shift"  Time="{Binding SelectedShift.Start_hour, Mode=TwoWay}"></TimePicker>
             <TimePicker  Header="End of The Shift" Time="{Binding SelectedShift.End_hour, Mode=TwoWay}"></TimePicker>
