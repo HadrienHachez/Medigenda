@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoGenerateForm.Attributes;
 
 namespace Medigenda
 {
@@ -7,19 +8,38 @@ namespace Medigenda
         private TimeSpan start_hour;
         private TimeSpan end_hour;
         private TimeSpan hourworked;
+        private DateTime test_hour;
         private string output;
         private string color;
+        private int id;
         
 
-        public WorkerSchedule(TimeSpan start,TimeSpan end,string abreviation,string outputcolor)
+        public WorkerSchedule(TimeSpan start,TimeSpan end,string abreviation,string outputcolor,int id)
         {
             this.Start_hour = start;
             this.End_hour = end;
             this.Output = abreviation;
             this.Color = outputcolor;
+            this.Id = id;
+        }
+
+
+        public int Id
+        {
+            get
+            {
+                return this.id;
+
+            }
+            set
+            {
+                this.id = value;
+                NotifyPropertyChanged();
+            }
         }
 
         #region Property
+        //[AutoGenerateProperty]
         public TimeSpan Start_hour
         {   get
             {
@@ -33,6 +53,22 @@ namespace Medigenda
             }
         }
 
+        [AutoGenerateProperty]
+        public DateTime Test_hour
+        {
+            get
+            {
+                return this.test_hour;
+
+            }
+            set
+            {
+                this.test_hour = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        //[AutoGenerateProperty]
         public TimeSpan End_hour
         {
             get
@@ -49,6 +85,7 @@ namespace Medigenda
         #endregion
 
         #region GuiProperty
+        [AutoGenerateProperty]
         public string Output
         {
             get
@@ -63,6 +100,7 @@ namespace Medigenda
             }
         }
 
+        [AutoGenerateProperty]
         public string Color
         {
             get

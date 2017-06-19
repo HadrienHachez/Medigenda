@@ -51,7 +51,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel  Grid.Column="0">
                 <TextBlock Text="General Informations"/>
-                <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedWorker, Mode=TwoWay}"/>
+                <!-- <autogenerator:AutoGenerator x:Name="form" CurrentDataContext="{Binding SelectedWorker, Mode=TwoWay}"/>-->
             </StackPanel>
          
             

@@ -186,11 +186,11 @@ namespace Medigenda
             //Remove and Update when DB is available
             return new ObservableCollection<WorkerSchedule>
         {
-            new WorkerSchedule(new TimeSpan(8,0,0),new TimeSpan(17,0,0),"M","#99ff99"),
-            new WorkerSchedule(new TimeSpan(13,0,0),new TimeSpan(20,0,0),"Sa","#ffff99"),
-            new WorkerSchedule(new TimeSpan(7,30,0),new TimeSpan(19,0,0),"SaW","#ff9999"),
-            new WorkerSchedule(new TimeSpan(9,0,0),new TimeSpan(20,30,0),"Sa","#ff7777"),
-            new WorkerSchedule(new TimeSpan(7,30,0),new TimeSpan(17,0,0),"Sa","#77ff77")
+            new WorkerSchedule(new TimeSpan(8,0,0),new TimeSpan(17,0,0),"M","#99ff99",0),
+            new WorkerSchedule(new TimeSpan(13,0,0),new TimeSpan(20,0,0),"Sa","#ffff99",1),
+            new WorkerSchedule(new TimeSpan(7,30,0),new TimeSpan(19,0,0),"SaW","#ff9999",2),
+            new WorkerSchedule(new TimeSpan(9,0,0),new TimeSpan(20,30,0),"Sa","#ff7777",3),
+            new WorkerSchedule(new TimeSpan(7,30,0),new TimeSpan(17,0,0),"Sa","#77ff77",4)
         };
 
         }

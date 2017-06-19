@@ -11,6 +11,7 @@ namespace Medigenda
         public ManageTimeSlots()
         {
             this.InitializeComponent();
+            this.DataContext = new ManageTimeSlotViewModel();
         }
     }
 }

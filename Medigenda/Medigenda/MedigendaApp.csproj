@@ -97,9 +97,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\LocalDB.cs" />
+    <Compile Include="Models\DB\WorkerScheduleTable .cs" />
     <Compile Include="Models\DB\WorkerTable.cs" />
     <Compile Include="Models\lib\Lib.cs" />
     <Compile Include="Models\WorkerSchedule.cs" />
+    <Compile Include="ViewModels\ManageTimeSlotViewModel.cs" />
     <Compile Include="View\FillTheService.xaml.cs">
       <DependentUpon>FillTheService.xaml</DependentUpon>
     </Compile>
