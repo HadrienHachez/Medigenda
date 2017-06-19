@@ -28,7 +28,7 @@ namespace Medigenda
         DeleteButton = new RelayCommand(DeleteButtonExecute);
         SaveButton = new RelayCommand(SaveButtonExecute);
         this.WorkerSchedulelisting = GetWorkerScheduleListing();
-
+            SelectedWorkerSchedule = WorkerScheduleListing[0];
 
     }
 
@@ -61,6 +61,7 @@ namespace Medigenda
         Database.Insert(currentWorker);
         var current = Database.Query<WorkerScheduleTable>("SELECT * FROM WorkerTable Where Id = (SELECT MAX(Id) FROM WorkerTable);");        
         WorkerSchedulelisting.Add(new WorkerSchedule(begin, end, output, color,current[0].Id));
+        
     }
 
     private void SaveButtonExecute()

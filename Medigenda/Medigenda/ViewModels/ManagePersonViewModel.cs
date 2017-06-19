@@ -27,7 +27,7 @@ namespace Medigenda
             DeleteButton = new RelayCommand(DeleteButtonExecute);
             SaveButton = new RelayCommand(SaveButtonExecute);
             this.WorkerListing = GetWorkerListing();
-    
+            SelectedWorker = WorkerListing[0];
 
         }
 

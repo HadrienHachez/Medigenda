@@ -7,8 +7,6 @@ namespace Medigenda
     {
         private TimeSpan start_hour;
         private TimeSpan end_hour;
-        private TimeSpan hourworked;
-        private DateTime test_hour;
         private string output;
         private string color;
         private int id;
@@ -53,20 +51,6 @@ namespace Medigenda
             }
         }
 
-        [AutoGenerateProperty]
-        public DateTime Test_hour
-        {
-            get
-            {
-                return this.test_hour;
-
-            }
-            set
-            {
-                this.test_hour = value;
-                NotifyPropertyChanged();
-            }
-        }
 
         //[AutoGenerateProperty]
         public TimeSpan End_hour

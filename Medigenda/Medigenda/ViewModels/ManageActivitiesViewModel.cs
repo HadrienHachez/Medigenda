@@ -18,6 +18,7 @@ namespace Medigenda
             AddButton = new RelayCommand(AddButtonExecute);
             DeleteButton = new RelayCommand(DeleteButtonExecute);
             this.ActivitiesListing = GetActivitiesListing();
+            SelectedActivity = ActivitiesListing[0];
         }
 
 

@@ -50,8 +50,10 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel  Grid.Column="0">
-                <TextBlock Text="General Informations"/>
+                <TextBlock Text="Worker Schedule Management Page"/>
                 <auto:AutoGenerator CurrentDataContext="{Binding SelectedWorkerSchedule, Mode=OneWay}"/>
+                <TimePicker  Header="Beginning Hour"  Time="{Binding SelectedWorkerSchedule.Start_hour, Mode=TwoWay}"></TimePicker>
+                <TimePicker  Header="End Hourt" Time="{Binding SelectedWorkerSchedule.End_hour, Mode=TwoWay}"></TimePicker>
             </StackPanel>
         </Grid>
     </Grid>
