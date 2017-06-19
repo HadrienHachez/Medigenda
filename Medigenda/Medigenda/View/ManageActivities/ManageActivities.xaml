@@ -12,7 +12,8 @@
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Add"     Label="Add "     Command="{Binding AddButton}"/>
+            <AppBarButton Icon="Save"     Label="Save Shift"     Command="{Binding SaveButton}"/>
+            <AppBarButton Icon="Add"     Label="Add Shift"     Command="{Binding AddButton}"/>
             <AppBarButton Icon="Delete"  Label="Delete "  Command="{Binding DeleteButton}"/>
         </CommandBar>
     </Page.BottomAppBar>
@@ -56,10 +57,11 @@
         
         
         <StackPanel Grid.Column="2">
-            <autogenerator:AutoGenerator x:Name="theform" CurrentDataContext="{Binding SelectedShiftauto, Mode=TwoWay}"/>
+            <autogenerator:AutoGenerator x:Name="theform" CurrentDataContext="{Binding SelectedShift, Mode=TwoWay}"/>
             <TimePicker  Header="Beginning of The Shift"  Time="{Binding SelectedShift.Start_hour, Mode=TwoWay}"></TimePicker>
             <TimePicker  Header="End of The Shift" Time="{Binding SelectedShift.End_hour, Mode=TwoWay}"></TimePicker>
 
+            <TextBlock Text="Opening Day"></TextBlock>
             <ItemsControl ItemsSource="{Binding  SelectedShift.Opening_Day}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

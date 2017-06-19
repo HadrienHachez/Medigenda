@@ -10,7 +10,6 @@ namespace Medigenda
     {
         [PrimaryKey,AutoIncrement]
         public int Id { get; set; }
-
         public string Output { get; set; }
         public string Color { get; set; }
         public string BeginHour { get; set; }

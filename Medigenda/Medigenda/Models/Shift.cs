@@ -8,7 +8,7 @@ namespace Medigenda
     {
         private TimeSpan start_hour, end_hour;
         private ObservableCollection<Worker> workers;
-        private int min_workers, opt_workers;
+        private int min_workers, opt_workers,id;
         private ObservableCollection<OpenWeekDay> opening_day = new ObservableCollection<OpenWeekDay>
         {
             new OpenWeekDay(DayOfWeek.Monday),
@@ -41,6 +41,12 @@ namespace Medigenda
         #endregion
 
         #region Property
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
+        }
+
         public ObservableCollection<Worker> Workers
         {
             get { return this.workers ; }
@@ -53,8 +59,7 @@ namespace Medigenda
             set { this.opening_day = value; }
         }
 
-        [AutoGenerateProperty]
-        [Display("Begin hour")]
+
         public TimeSpan Start_hour
         {
             get { return this.start_hour; }
@@ -64,8 +69,7 @@ namespace Medigenda
             }
         }
 
-        [AutoGenerateProperty]
-        [Display("End Hour")]
+ 
         public TimeSpan End_hour
         {
             get { return this.end_hour; }

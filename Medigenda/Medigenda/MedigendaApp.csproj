@@ -96,7 +96,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB\LocalDB.cs" />
+    <Compile Include="Models\DB\ServiceTable.cs" />
+    <Compile Include="Models\DB\ShiftTable.cs" />
     <Compile Include="Models\DB\WorkerScheduleTable .cs" />
     <Compile Include="Models\DB\WorkerTable.cs" />
     <Compile Include="Models\lib\Lib.cs" />

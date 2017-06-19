@@ -59,7 +59,7 @@ namespace Medigenda
         currentWorker.Output = output;
         currentWorker.Color = color;
         Database.Insert(currentWorker);
-        var current = Database.Query<WorkerScheduleTable>("SELECT * FROM WorkerTable Where Id = (SELECT MAX(Id) FROM WorkerTable);");        
+        var current = Database.Query<WorkerScheduleTable>("SELECT * FROM  WorkerScheduleTable Where Id = (SELECT MAX(Id) FROM  WorkerScheduleTable);");        
         WorkerSchedulelisting.Add(new WorkerSchedule(begin, end, output, color,current[0].Id));
         
     }

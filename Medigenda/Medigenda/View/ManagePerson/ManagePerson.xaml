@@ -10,7 +10,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Icon="Save"     Label="Save Change"     Command="{Binding SaveButton}"/>
-            <AppBarButton Icon="Add"     Label="Add Worker"     Command="{Binding AddButton}"/>
+            <AppBarButton Icon="AddFriend"     Label="Add Worker"     Command="{Binding AddButton}"/>
             <AppBarButton Icon="Delete"  Label="Delete Worker"  Command="{Binding DeleteButton}"/>
         </CommandBar>
     </Page.BottomAppBar>

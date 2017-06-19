@@ -52,13 +52,8 @@ namespace Medigenda
             WorkerTable currentWorker = new WorkerTable();
             currentWorker.Lastname = "Worker";
             currentWorker.Firstname = "New";
-            Database.Insert(currentWorker);
-            
-            var current = Database.Query<WorkerTable>("SELECT * FROM WorkerTable Where id = (SELECT MAX(Id) FROM WorkerTable);");
-                
-               
-           
-               
+            Database.Insert(currentWorker);         
+            var current = Database.Query<WorkerTable>("SELECT * FROM WorkerTable Where id = (SELECT MAX(Id) FROM WorkerTable);");        
             WorkerListing.Add(new Worker(currentWorker.Firstname,currentWorker.Lastname,current[0].Id));
         }
 
@@ -72,6 +67,7 @@ namespace Medigenda
 
         public void DeleteButtonExecute()
         {
+            update();
             Database.Execute(string.Format("DELETE FROM WorkerTable Where Id = {0}", SelectedWorker.Id));
             this.WorkerListing.Remove(SelectedWorker);
         }
